@@ -1,0 +1,79 @@
+ # r code for classifying images 
+library(terra)
+library(imageRy)
+
+im.list()
+
+mato1992=im.import("matogrosso_l5_1992219_lrg.jpg")
+
+plot(mato1992)
+
+mato2006=im.import("matogrosso_ast_2006209_lrg.jpg")
+mato2006=flip(mato2006)
+plot(mato2006)
+
+im.classify
+mato2006c=im.classsify(mato2006, num_clusters=2)
+
+mato1996c=im.classsify(mato1996, num_clusters=2)
+
+# class 1 =forest 
+#class 2 = human 
+
+f1992=freq(mato1992c)
+
+tot1992=ncell(mato1992c)
+
+prop1992=f1992/tot1992
+perc1992= prop1992 * 100
+
+# percentages:
+# forest= 83%
+# human = 17%
+
+
+perc1992=freq(mato1992c *100 / ncell(mato1992c)
+
+
+f2006=freq(mato2006c)
+
+tot2006=ncell(mato2006c)
+prop2006=f2006/tot2006
+
+perc2006=prop2006 * 100
+
+perc2006=freq(mato2006c *100 / ncell(mato2006c)
+
+# percentages 
+# forest= 45%
+# human= 55%
+
+class=c("Forest", "Human")
+y1992= c(82,17)
+y2006=c(45,55)
+
+tabout=data.frame(class,y1992, y2006)
+
+
+library(ggplot2)
+
+ggplot(tabout,aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+
+
+ggplot(tabout,aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+
+#install.packages("patchwork")
+
+library(patchwork)
+
+p1=ggplot(tabout,aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2=ggplot(tabout,aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+
+p1+p2
+
+p1=ggplot(tabout,aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100)) + coord_flip()
+p2=ggplot(tabout,aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))+ coord_flip()
+
+p1 / p2 
+
+
