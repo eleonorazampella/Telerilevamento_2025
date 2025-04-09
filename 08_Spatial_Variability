@@ -1,0 +1,107 @@
+#code for calculating spazial variability e metterle una accanto all'altra con ggplot
+
+library(terra)
+library(imageRy)
+library(viridis)
+library(patchwork)
+install.packages("RStoolbox")
+library(RStoolbox)
+
+# 24 26 25 
+
+
+
+media= (24+25+26) / 3
+
+num= (24-media)^2 + (26-media)^2 + (25-media)^2
+den=3
+
+varianza=num/den
+
+stdev=sqrt(varianza)
+stdev
+[1] 0.8164966 #valore deviazione standard 
+
+sd(c(24,26,25))
+# 1 # il risultato è uno perchè è stimato su popolazione 
+sd(c(24,26,25,49))
+12.02775 #Se aggiungo un dato- se ho dato che fa aumentare numerità ho tirato curva ad espandersi da un lato quindi deviazione standard è aumentata molto da 1 a 12
+
+im.list()
+
+sent = im.import("sentinel.png")
+sent = flip(sent)
+
+#banda 1 = NIR
+#banda 2= red
+#banda 3= green 
+
+# Exercise plot the image in RGB with the NIR ontop of the red component
+
+im.plotRGB(sent, r=1, g=2, b=3)
+
+
+# Exercise: make three plots with NIR ontop of each component: r, g, b
+
+dev.off
+im.multiframe(1,3)
+im.plotRGB(sent, r=1, g=2, b=3)
+im.plotRGB(sent, r=2, g=1, b=3)
+im.plotRGB(sent, r=3, g=2, b=1)
+
+#----
+
+nir = sent[[1]]
+
+# Exercise: plot the nir band with the inferno color ramp palette
+
+# inferno è nel pacchetto viridis quindi metto library(viridis)
+# poi mi metto dev.off per togliere precedente 
+
+plot(nir, col=inferno(100))
+sd3 = focal(nir, w=c(3,3), fun="sd") # funzione focal, non chiamare sd perchè andrà sopra la funziona sd invece è un oggetto. con questo quindi calcolo la deviazione standard 
+plot(sd3) # deviazione stadard su matrice di 3x3 pixel: vedo tutte le zone con variazione di infrarosso vicino e variazioni di vegetazioni 
+
+
+im.multiframe(1,2)
+im.plotRGB(sent, r=1, g=2, b=3) #così metto le mie immagini vicine, immagine originale con zone e in parallelo con deviazione standard 
+plot(sd3)  # aggiungo plot 
+
+# Exercise: calculate standard deviation of the nir band with a moving window of 5x5 pixels
+sd5 = focal(nir, w=c(5,5), fun=sd) # per vedere movie window in maniera più grande- aumento la finistrea a 5, uso dev.off per avere singolo grafico prima del plot 
+plot(sd5)
+
+im.multiframe(1,2) #per metterle una accanto all'altra 
+plot(sd3)
+plot(sd5)
+
+# Exercise: use ggplot to plot the standard deviation
+im.ggplot(sd3) # per fare il plot della nostra immagine, ggplot perchè ho il blackground grigio
+
+# posso con ggplot plottare due immmagini diverse e le possiamo unire: Exercise: plot the two sd maps (3 and 5) one beside the other with ggplot
+# per fare questo devo usare una libreria che si chiama patchwork, prendo i plot, li associo a due oggetti e poi li sommo 
+
+
+p1 = im.ggplot(sd3)
+p2 = im.ggplot(sd5)
+p1 + p2
+
+# posso stabilirre anche grandezza immagini con una funzione 
+
+install.packages("RStoolbox")
+library(RStoolbox) # questi due servono perchè le due immagini non sono una più grande dell'altra
+
+# Exercise: with ggplot, plot the original set in RGB (ggRGB) together with the sd with 3 and 5 pixels
+p3 = ggRGB(sent, r=1, g=2, b=3)
+p1 + p2 + p3
+p3 + p1 + p2
+
+
+
+# plot the original nir and devstandard e questa funzione puoi usarla se non va RStoolbox
+p3 = im.ggplot(nir)
+p3 + p1
+
+
+
+
