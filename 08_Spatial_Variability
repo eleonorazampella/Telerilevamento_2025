@@ -102,6 +102,91 @@ p3 + p1 + p2
 p3 = im.ggplot(nir)
 p3 + p1
 
+#
+
+sent = im.import("sentinel.png")
+sent = flip(sent)
+
+# what to do in case of huge images
+
+ncell(sent) #numero di pixel in totale 
+ncell(sent) * nlyr(sent)
+
+# 794* 798
+
+senta = aggregate(sent,fact=2) #aumenro pixel di due, così vedo come passa la risoluzione e moltiplico ogni volta ogni dato, lavoriamo su due dimensioni 
+ncell(senta) * nlyr(senta)
+#633612
+
+senta5 = aggregate(sent,fact=5)
+ncell(senta5) * nlyr(senta5)  
+#101760
+
+#Exercise: make a multiframe and plot in RGB in the three images (or,2,5)
+im.multiframe(1,3)
+im.plotRGB(sent, 1,2,3)   # hours tolto r,g,b perchè mi considera lo stesso 
+im.plotRGB(senta, 1,2,3)
+im.plotRGB(senta5, 1,2,3)
+
+
+#calcolo deviazione standard with this imagines
+nira = senta[[1]]
+sd3a = focal(nira, w=c(3,3), fun="sd")  #qua devo selezionare un solo livello qiondi metto nira 
+plot(sd3a) # per vedere l' immagine 
+
+#exercise: calculate the standard deviation for the factor 5 image
+nira5 = senta5[[1]]
+sd3a5 = focal(nira5, w=c(3,3), fun="sd") # vedo la deviazione standard 
+plot(sd3a5) # 
+
+#plot con finestra 5x5
+sd5a5 = focal(nira5, w=c(5,5), fun="sd")
+
+im.multiframe(1,2)
+plot(sd5a5)
+plot(sd3a)
+
+nir = sent[[1]] # questo per rimettere in r la funzione fatta ieri 
+im.multiframe(2,2) #perchè sono 4 così facciamo quadrato
+plot(sd3)
+plot(sd3a)
+plot(sd3a5)
+plot(sd5a5)
+
+# per farlo anche con ggplot associati ad oggetti (per farlo però ho bisogno del pacchetto patchwork)
+
+p1=im.ggplot(sd3)
+p2=im.ggplot(sd3a)
+p3=im.ggplot(sd3a5)
+p4=im.ggplot(sd5a5)
+
+p1 + p2 + p3 + p4 # posso metterli tutti in fila 
+
+im.multiframe(2,2)    # questo ho aggiunto col= palsma così cambio il colore 
+plot(sd3,col=plasma)
+plot(sd3a,col=plasma)
+plot(sd3a5,col=plasma)
+plot(sd5a5,col=plasma)
+col=plasma 
 
 
 
+
+#varianza 
+#nir
+var3=sd3 ^2  #la varianza 
+
+def.off()
+plot(var3)
+
+im.multiframe(1,2)
+plot(sd3)
+plot(var3)
+
+sd5=focal(nir, w=c(5,5), fun="sd")
+var5= sd5^ 2 
+plot(sd5)
+plot(var5)
+
+
+#varianza ho valorizzazione parte esterne ma non parte intermedia 
