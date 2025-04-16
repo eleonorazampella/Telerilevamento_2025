@@ -8,3 +8,6 @@ https://numxl.com/blogs/principal-component-analysis-pca-101/
 information about theory of Principal Ccomponent Analysis can be found [here].(https://numxl.com/blogs/principal-component-analysis-pca-101/)
 
 a grafical sketch is the following: 
+
+<img scr="..Pics/pca.png"/>   #devo mettere questi due punti perchè devo entrare dentro 
+
