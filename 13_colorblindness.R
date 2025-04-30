@@ -11,17 +11,18 @@ library(cblindplot)
 
 # Importing data
 setwd("~/Desktop")
+# https://fb.watch/xfBsEdtO4Z/
 vinicunca = rast("vinicunca.jpg")
 plot(vinicunca)
 vinicunca = flip(vinicunca)
 plot(vinicunca)
 
-# Simulating colorblindness, standard vision 
-im.multiframe(1,2)
+# Simulating colorblindness
+im.multiframe(2,1)
 im.plotRGB(vinicunca, r=1, g=2, b=3, title="Standard Vision")
 im.plotRGB(vinicunca, r=2, g=1, b=3, title="Protanopia")
 
-# Solving colorblindness 
+# Solving colorblindness
 dev.off()
 rainbow = rast("rainbow.jpg")
 plot(rainbow)
