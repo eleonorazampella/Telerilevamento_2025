@@ -23,7 +23,15 @@ post=rast("PostIncendio_Agosto2022.tif") #Importo la seconda immagine
 plot(post) # Per visulizzare la seconda immagine
 
 #Visualizzo le immagini in RGB
+im.multiframe(1,2)
 im.plotRGB(pre, r = 1, g = 2, b = 3, title = "Pre-incendio")
 im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio")
+dev.off()
+
+# Visualizzo le quattro bande separate (RGB e NIR) per entrambe le immagini
+im.multiframe(1,2)
+plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
+plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
+dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
 
 
