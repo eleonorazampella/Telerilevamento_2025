@@ -1,0 +1,165 @@
+// ESAME - ANALISI 
+// Telerilevamento geologico in R
+// Eleonora Zampella
+
+// CODICE IN JAVA SCRIPT PER SCARICARE LE IMMAGINI DI SENTINEL-2 DA GOOGLE EARTH ENGINE
+// Le immagini riguardano le zone della Galizia e della Castiglia e Leon soggette ad un incendio
+// Ho utilizzato il codice di Rocio Beatriz... modificando le bande, l'area di interesse (indicata attraverso un poligono) e il periodo da me preso in considerazione. 
+// Le immagini prese sono quelle con una copertura nuvolosa inferiore al 20 % 
+
+// Immagine Pre incendio (dal 24/04/2025 al 30/04/2025) 
+// Nell'immagine è stata calcolata  la mediana 
+
+// ==============================================
+// Function to mask clouds using the QA60 band
+// Bits 10 and 11 correspond to opaque clouds and cirrus
+// ==============================================
+function maskS2clouds(image) {
+  var qa = image.select('QA60');
+  var cloudBitMask = 1 << 10;
+  var cirrusBitMask = 1 << 11;
+
+  // Keep only pixels where both cloud and cirrus bits are 0
+  var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+               .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+
+  // Apply the cloud mask and scale reflectance values (0–10000 ➝ 0–1)
+  return image.updateMask(mask).divide(10000);
+}
+
+// ==============================================
+// Load and Prepare the Image Collection
+// ==============================================
+
+// Load Sentinel-2 SR Harmonized collection (atmospherical correction already done)
+var collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+                   .filterBounds(geometry)
+                   .filterDate('2025-04-25', '2025-04-30')              // Filter by date                                 
+                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20)) // Only images with <20% cloud cover
+                   .map(maskS2clouds);                                  // Apply cloud masking
+
+// Print number of images available after filtering
+print('Number of images in collection:', collection.size());
+
+// ==============================================
+// Create a median composite from the collection
+// Useful when the AOI overlaps multiple scenes or frequent cloud cover
+// ==============================================
+var composite = collection.median().clip(geometry);
+
+// ==============================================
+// Visualization on the Map
+// ==============================================
+
+Map.centerObject(geometry, 10); // Zoom to the aoi
+
+// Display the first image of the collection (GEE does this by default)
+Map.addLayer(collection, {
+  band: ['B4', 'B3', 'B2', 'B8'],  // RGB and NIR color
+  min: 0,
+  max: 0.3
+}, 'First image of collection');
+
+// Display the median composite image
+Map.addLayer(composite, {
+  band: ['B4', 'B3', 'B2', 'B8'], 
+  min: 0,
+  max: 0.3
+}, 'Median composite');
+
+// ==============================================
+// Export to Google Drive
+// ==============================================
+
+// Export the median composite
+Export.image.toDrive({
+  image: composite.select(['B4', 'B3', 'B2', 'B8']),  // Select NIR band
+  description: 'Galizia_Castiglia_PreIncendio_Agosto2025',
+  folder: 'GEE_exports',                        // Folder in Google Drive
+  fileNamePrefix: 'Galizia_Castiglia_PreIncendio_Aprile2025',
+  region: geometry,
+  scale: 10,                                    // Sentinel-2 resolution
+  crs: 'EPSG:4326',
+  maxPixels: 1e13
+});
+
+
+// Immagine Post incendio (dal 25/08/2025 al 30/08/2025)
+// Nell'immagine è stata calcolata  la mediana 
+
+// ==============================================
+// Function to mask clouds using the QA60 band
+// Bits 10 and 11 correspond to opaque clouds and cirrus
+// ==============================================
+function maskS2clouds(image) {
+  var qa = image.select('QA60');
+  var cloudBitMask = 1 << 10;
+  var cirrusBitMask = 1 << 11;
+
+  // Keep only pixels where both cloud and cirrus bits are 0
+  var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+               .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+
+  // Apply the cloud mask and scale reflectance values (0–10000 ➝ 0–1)
+  return image.updateMask(mask).divide(10000);
+}
+
+// ==============================================
+// Load and Prepare the Image Collection
+// ==============================================
+
+// Load Sentinel-2 SR Harmonized collection (atmospherical correction already done)
+var collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+                   .filterBounds(geometry)
+                   .filterDate('2025-08-25', '2025-08-30')              // Filter by date                                 
+                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20)) // Only images with <20% cloud cover
+                   .map(maskS2clouds);                                  // Apply cloud masking
+
+// Print number of images available after filtering
+print('Number of images in collection:', collection.size());
+
+// ==============================================
+// Create a median composite from the collection
+// Useful when the AOI overlaps multiple scenes or frequent cloud cover
+// ==============================================
+var composite = collection.median().clip(geometry);
+
+// ==============================================
+// Visualization on the Map
+// ==============================================
+
+Map.centerObject(geometry, 10); // Zoom to the aoi
+
+// Display the first image of the collection (GEE does this by default)
+Map.addLayer(collection, {
+  band: ['B4', 'B3', 'B2', 'B8'],  // RGB and NIR color
+  min: 0,
+  max: 0.3
+}, 'First image of collection');
+
+// Display the median composite image
+Map.addLayer(composite, {
+  band: ['B4', 'B3', 'B2', 'B8'], 
+  min: 0,
+  max: 0.3
+}, 'Median composite');
+
+// ==============================================
+// Export to Google Drive
+// ==============================================
+
+// Export the median composite
+Export.image.toDrive({
+  image: composite.select(['B4', 'B3', 'B2', 'B8']),  // Select NIR band
+  description: 'Galizia_Castiglia_PostIncendio_Agosto2025',
+  folder: 'GEE_exports',                        // Folder in Google Drive
+  fileNamePrefix: 'Galizia_Castiglia_PreIncendio_Aprile2025',
+  region: geometry,
+  scale: 10,                                    // Sentinel-2 resolution
+  crs: 'EPSG:4326',
+  maxPixels: 1e13
+});
+
+// Entrambi i file sono state esportati su google drive e successivamente salvati sul computer e caricati in R
+
+
