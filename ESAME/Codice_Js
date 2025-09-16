@@ -24,41 +24,35 @@ function maskS2clouds(image) {
   return image.updateMask(mask).divide(10000);
 }
 
-// Area di interesse: Chandrexa de Queixa
-var geometry = ee.Geometry.Rectangle([-7.45, 42.37, -7.35, 42.42]);
-Map.centerObject(geometry, 12);
-Map.addLayer(geometry, {color: 'red'}, 'Rettangolo Chandrexa');
+// Area di interesse: Chandrexa de Queixa (rettangolo ampliato)
+var geometry = ee.Geometry.Rectangle([-7.8, 42.3, -7.2, 42.8]);
+Map.centerObject(geometry, 10);
+Map.addLayer(geometry, {color: 'red'}, 'Rettangolo Ourense');
 
-// Carica la collezione Sentinel-2
-var collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
-                   .filterBounds(geometry)
-                   .filterDate('2025-06-25', '2025-06-30')
-                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
-                   .map(maskS2clouds);
+var preFireCollection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+                           .filterBounds(geometry)
+                           .filterDate('2025-06-25', '2025-06-30')
+                           .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
+                           .map(maskS2clouds);
 
-print('Numero immagini pre-incendio:', collection.size());
+print('Numero immagini pre-incendio:', preFireCollection.size());
 
-// Crea composito mediano
-var composite = collection.median().clip(geometry);
+var preFireComposite = preFireCollection.median().clip(geometry);
 
-// Visualizzazione (massimo 3 bande per layer)
-Map.addLayer(composite, {bands: ['B4','B3','B2'], min:0, max:0.3}, 'RGB naturale');
-Map.addLayer(composite, {bands: ['B8','B4','B3'], min:0, max:0.3}, 'Falso colore');
-Map.addLayer(composite, {bands: ['B8'], min:0, max:0.3, palette:['black','white']}, 'Banda NIR');
+Map.addLayer(preFireComposite, {bands: ['B4','B3','B2'], min:0, max:0.3}, 'Pre-incendio RGB');
+Map.addLayer(preFireComposite, {bands: ['B8','B4','B3'], min:0, max:0.3}, 'Pre-incendio Falso colore');
+Map.addLayer(preFireComposite, {bands: ['B8'], min:0, max:0.3, palette:['black','white']}, 'Pre-incendio NIR');
 
-// Export tutte e 4 le bande
 Export.image.toDrive({
-  image: composite.select(['B2','B3','B4','B8']),
-  description: 'Chandrexa_PreIncendio_Luglio2025',
+  image: preFireComposite.select(['B2','B3','B4','B8']),
+  description: 'Ourense_PreIncendio_Giugno2025',
   folder: 'GEE_exports',
-  fileNamePrefix: 'PreIncendio_Luglio2025',
+  fileNamePrefix: 'PreIncendio_Ourense_Giugno2025',
   region: geometry,
   scale: 10,
   crs: 'EPSG:4326',
   maxPixels: 1e13
 });
-
-
 
 // Immagine Post incendio (dal 05/09/2025 al 10/09/2025)
 // Nell'immagine è stata calcolata  la mediana 
@@ -77,39 +71,39 @@ function maskS2clouds(image) {
   return image.updateMask(mask).divide(10000);
 }
 
-// Area di interesse: Chandrexa de Queixa
-var geometry = ee.Geometry.Rectangle([-7.45, 42.37, -7.35, 42.42]);
-Map.centerObject(geometry, 12);
-Map.addLayer(geometry, {color: 'red'}, 'Rettangolo Chandrexa');
+// Area di interesse: Chandrexa de Queixa (rettangolo ampliato)
+var geometry = ee.Geometry.Rectangle([-7.8, 42.3, -7.2, 42.8]);
+Map.centerObject(geometry, 10);
+Map.addLayer(geometry, {color: 'red'}, 'Rettangolo Ourense');
 
-// Carica la collezione Sentinel-2
-var collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
-                   .filterBounds(geometry)
-                   .filterDate('2025-09-05', '2025-09-10')
-                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
-                   .map(maskS2clouds);
+var postFireCollection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+                            .filterBounds(geometry)
+                            .filterDate('2025-08-25', '2025-08-30')
+                            .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
+                            .map(maskS2clouds);
 
-print('Numero immagini post-incendio:', collection.size());
+print('Numero immagini post-incendio:', postFireCollection.size());
 
-// Crea composito mediano
-var composite = collection.median().clip(geometry);
+var postFireComposite = postFireCollection.median().clip(geometry);
 
-// Visualizzazione (massimo 3 bande per layer)
-Map.addLayer(composite, {bands: ['B4','B3','B2'], min:0, max:0.3}, 'RGB naturale');
-Map.addLayer(composite, {bands: ['B8','B4','B3'], min:0, max:0.3}, 'Falso colore');
-Map.addLayer(composite, {bands: ['B8'], min:0, max:0.3, palette:['black','white']}, 'Banda NIR');
+Map.addLayer(postFireComposite, {bands: ['B4','B3','B2'], min:0, max:0.3}, 'Post-incendio RGB');
+Map.addLayer(postFireComposite, {bands: ['B8','B4','B3'], min:0, max:0.3}, 'Post-incendio Falso colore');
+Map.addLayer(postFireComposite, {bands: ['B8'], min:0, max:0.3, palette:['black','white']}, 'Post-incendio NIR');
 
-// Export tutte e 4 le bande
 Export.image.toDrive({
-  image: composite.select(['B2','B3','B4','B8']),
-  description: 'Chandrexa_PostIncendio_Settembre2025',
+  image: postFireComposite.select(['B2','B3','B4','B8']),
+  description: 'Ourense_PostIncendio_Settembre2025',
   folder: 'GEE_exports',
-  fileNamePrefix: 'PostIncendio_Settembre2025',
+  fileNamePrefix: 'PostIncendio_Ourense_Settembre2025',
   region: geometry,
   scale: 10,
   crs: 'EPSG:4326',
   maxPixels: 1e13
 });
+
+
+                  
+
 
 
 // Entrambi i file sono state esportati su google drive e successivamente salvati sul computer e caricati in R
