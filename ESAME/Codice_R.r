@@ -16,10 +16,10 @@ library(patchwork) # Pacchetto per comporre più grafici ggplot insieme
 # Imposto la working directory 
 setwd("~/Desktop/TELERILEVAMENTO_R")
 
-pre=rast("PreIncendio_Ourense_Giugno2025.tif") # Importo la prima immagine
+pre=rast("PreIncendio_Giugno2025.tif") # Importo la prima immagine
 plot(pre) # Per visulaizzare l'immagine importata
 
-post=rast("PostIncendio_Ourense_Settembre2025.tif") #Importo la seconda immagine
+post=rast("PostIncendio_Settembre2025.tif") #Importo la seconda immagine
 plot(post) # Per visulizzare la seconda immagine
 
 #Visualizzo le immagini in RGB
