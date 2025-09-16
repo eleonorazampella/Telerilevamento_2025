@@ -10,6 +10,7 @@
 // Immagine Pre incendio (dal 25/06/2025 al 30/06/2025) 
 // Nell'immagine è stata calcolata  la mediana 
 
+``` JavaScript
 // ==============================================
 // Function to mask clouds using the QA60 band
 // Bits 10 and 11 correspond to opaque clouds and cirrus
