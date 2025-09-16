@@ -10,7 +10,7 @@
 // Immagine Pre incendio (dal 25/06/2025 al 30/06/2025) 
 // Nell'immagine è stata calcolata  la mediana 
 
-``` JavaScript
+
 
 // ==============================================
 // Function to mask clouds using the QA60 band
@@ -66,12 +66,12 @@ Export.image.toDrive({
   maxPixels: 1e13
 });
 
-``` 
+
 
 // Immagine Post incendio (dal 05/09/2025 al 10/09/2025)
 // Nell'immagine è stata calcolata  la mediana 
 
-``` JavaScript
+
 
 // ==============================================
 // Function to mask clouds using the QA60 band
@@ -127,8 +127,5 @@ Export.image.toDrive({
   maxPixels: 1e13
 });
                
-``` 
-
 // Entrambi i file sono state esportati su google drive e successivamente salvati sul computer e caricati in R
-
 
