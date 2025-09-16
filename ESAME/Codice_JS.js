@@ -7,7 +7,7 @@
 // Ho utilizzato il codice di Rocio Beatriz Cortes Lobos modificando le bande, l'area di interesse (indicata attraverso un poligono) e il periodo da me preso in considerazione. 
 // Le immagini prese sono quelle con una copertura nuvolosa inferiore al 20 % 
 
-// Immagine Pre incendio (dal 05/05/2022 al 10/05/2022) 
+// Immagine Pre incendio (dal 25/05/2022 al 30/05/2022) 
 // Nell'immagine è stata calcolata  la mediana 
 
 
@@ -35,7 +35,7 @@ Map.addLayer(aoi, {color: 'red'}, 'AOI Sierra de la Culebra');
 // Collezione Sentinel-2 PRE-incendio
 var collection_pre = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
   .filterBounds(aoi)
-  .filterDate('2022-05-05', '2022-05-10')
+  .filterDate('2022-05-25', '2022-05-30')
   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
   .map(maskS2clouds);
 
@@ -63,7 +63,7 @@ Export.image.toDrive({
 
 
 
-// Immagine Post incendio (dal 20/08/2022 al 25/08/2022)
+// Immagine Post incendio (dal 01/08/2022 al 05/08/2022)
 // Nell'immagine è stata calcolata  la mediana 
 
 
@@ -91,7 +91,7 @@ Map.addLayer(aoi, {color: 'red'}, 'AOI Sierra de la Culebra');
 // Collezione Sentinel-2 POST-incendio
 var collection_post = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
   .filterBounds(aoi)
-  .filterDate('2022-08-20', '2022-08-25')
+  .filterDate('2022-08-01', '2022-08-05')
   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
   .map(maskS2clouds);
 
