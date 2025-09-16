@@ -3,7 +3,7 @@
 // Eleonora Zampella
 
 // CODICE IN JAVA SCRIPT PER SCARICARE LE IMMAGINI DI SENTINEL-2 DA GOOGLE EARTH ENGINE
-// Le immagini riguardano la zona di Chandrexa de Queixa (Ourense) in Galizia,Spagna
+// Le immagini riguardano la zona di in Galizia,Spagna
 // Ho utilizzato il codice di Rocio Beatriz Cortes Lobos modificando le bande, l'area di interesse (indicata attraverso un poligono) e il periodo da me preso in considerazione. 
 // Le immagini prese sono quelle con una copertura nuvolosa inferiore al 20 % 
 
