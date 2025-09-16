@@ -34,4 +34,18 @@ plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
 
+im.multiframe(2,4) #apro un pannello multiframe, ancora vuoto, di n°2 righe e n°4 colonne
+plot(pre[[1]], col = magma(100), main = "Pre - Red") #viene specificata la banda, il colore e il titolo
+plot(pre[[2]], col = magma(100), main = "Pre - Green")
+plot(pre[[3]], col = magma(100), main = "Pre - Blue")
+plot(pre[[4]], col = magma(100), main = "Pre - NIR")
+
+plot(post[[1]], col = magma(100), main = "Post - Red")
+plot(post[[2]], col = magma(100), main = "Post - Green")
+plot(post[[3]], col = magma(100), main = "Post - Blue")
+plot(post[[4]], col = magma(100), main = "Post - NIR")
+dev.off()
+
+
+
 
