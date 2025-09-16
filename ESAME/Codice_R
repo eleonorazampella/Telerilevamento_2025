@@ -1,0 +1,8 @@
+# PROGETTO ESAME - ANALISI DELL'IMPATTO DEGLI INCENDI ESTIVI 2025 SULLA VEGETAZIONE E SULL'AMBIENTE URBANO NELLE REGIONI DELLA GALIZIA E DELLA CASTIGLIA Y LEON
+# Telerilevamento Geo-ecologico in R
+# Eleonora Zampella 
+
+# CODICE IN R PER L'ELABORAZIONE DELLE IMMAGINI 
+
+# Le immagini sono scaricate da Google Earth Engine attraverso il codice di Rocio Beatriz Cortes Lobos e sono relative agli incendi avventuti in Galizia e Castiglia y Leon. 
+
