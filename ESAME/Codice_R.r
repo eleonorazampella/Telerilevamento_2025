@@ -51,9 +51,9 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 # Indice NBR (Normalized Burn Ratio)
 # L'indice sfrutta la banda NIR (B8) e la banda SWIR2 (B12)
 # L'indice serve a visualizzare le aree bruciate: valori più bassi indicano vegetazione compromessa
-nbr_pre=(pre[["B8"]] - pre[["B12"]]) / (pre[["B8"]] + pre[["B12"]]) # Calcolo NBR pre-incendio
-nbr_post=(post[["B8"]] - post[["B12"]]) / (post[["B8"]] + post[["B12"]]) # Calcolo NBR post-incendio
-dnbr=nbr_pre - nbr_post # Differenza NBR (dNBR)
+nbr_pre = (pre[["B8"]] - pre[["B12"]]) / (pre[["B8"]] + pre[["B12"]]) # Calcolo NBR pre-incendio
+nbr_post = (post[["B8"]] - post[["B12"]]) / (post[["B8"]] + post[["B12"]]) # Calcolo NBR post-incendio
+dnbr = nbr_pre - nbr_post # Differenza NBR (dNBR)
 
 im.multiframe(1,3)  #  Visualizzare un pannello grafico con 1 righe e 3 colonne
 plot(nbr_pre, main="NBR Pre", col=viridis::viridis(100)) # Visualizzazione NBR pre-incendio
@@ -64,22 +64,22 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 # Indice DVI ((Difference Vegetation Index))
 # NIR - RED
 # Misura la quantità assoluta di vegetazione senza normalizzazione
-dvi_pre=pre[["B8"]] - pre[["B4"]] # Calcolo DVI pre-incendio
-dvi_post=post[["B8"]] - post[["B4"]] # Calcolo DVI post-incendio
-ddvi=dvi_pre - dvi_post # Differenza DVI
+dvi_pre = pre[["B8"]] - pre[["B4"]] # Calcolo DVI pre-incendio
+dvi_post = post[["B8"]] - post[["B4"]] # Calcolo DVI post-incendio
+ddvi =d vi_pre - dvi_post # Differenza DVI
 
 im.multiframe(1,3)
-plot(dvi_pre, main="DVI Pre", col=viridis::viridis(100)) # Visualizzazione DVI pre-incendio 
-plot(dvi_post, main="DVI Post", col=viridis::viridis(100)) # Visualizzazione DVI post-incendio 
-plot(ddvi, main="ΔDVI", col=viridis::inferno(100)) # Visualizzazione della differenza DVI pre e post incendio 
+plot(dvi_pre, main = "DVI Pre", col=viridis::viridis(100)) # Visualizzazione DVI pre-incendio 
+plot(dvi_post, main = "DVI Post", col=viridis::viridis(100)) # Visualizzazione DVI post-incendio 
+plot(ddvi, main = "ΔDVI", col=viridis::inferno(100)) # Visualizzazione della differenza DVI pre e post incendio 
 dev.off()
 
 # Indice NDVI (Normalized Difference Vegetation Index)
 # (NIR - RED) / (NIR + RED)
 # Misura la salute della vegetazione: valori vicini a 1 indicano vegetazione sana
-ndvi_pre=(pre[["B8"]] - pre[["B4"]]) / (pre[["B8"]] + pre[["B4"]]) # Calcolo NDVI pre-incendio 
-ndvi_post=(post[["B8"]] - post[["B4"]]) / (post[["B8"]] + post[["B4"]]) # Calcolo NDVI post-incendio 
-dndvi=ndvi_pre - ndvi_post #differeza NDVI
+ndvi_pre = (pre[["B8"]] - pre[["B4"]]) / (pre[["B8"]] + pre[["B4"]]) # Calcolo NDVI pre-incendio 
+ndvi_post = (post[["B8"]] - post[["B4"]]) / (post[["B8"]] + post[["B4"]]) # Calcolo NDVI post-incendio 
+dndvi = ndvi_pre - ndvi_post #differeza NDVI
 
 im.multiframe(1,3)  #  Visualizzare un pannello grafico con 1 righe e 3 colonne
 plot(ndvi_pre, main="NDVI Pre", col=viridis::viridis(100))   #  Visualizzazione NDVI prima dell'incendio
@@ -92,5 +92,13 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 # Classificazione NDVI
 classi_pre=classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 classi_post=classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+# Faccio la differenza tra l'immagine del 2024 e quella del 2025, scegliendo solo la banda B8 relativa al NIR
+nir_diff = pre[[4]]-post[[4]]
+ndvi_diff = ndvi_pre-ndvi_post
+
+im.multiframe(1,2)
+plot(nir_diff, col=mako(100), main="NIR")
+plot(ndvi_diff, col=mako(100), main="NDVI")
+
 
 
