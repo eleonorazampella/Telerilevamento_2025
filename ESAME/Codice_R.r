@@ -100,5 +100,46 @@ im.multiframe(1,2)
 plot(nir_diff, col=mako(100), main="NIR")
 plot(ndvi_diff, col=mako(100), main="NDVI")
 
+# Scelgo soglia NDVI = 0.3 (tipica per distinguere vegetazione/non vegetazione)
+soglia = 0.3
+classi_pre = lassify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+classi_post = classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 
+im.multiframe(1,2)
+plot(classi_pre,  main="Classi NDVI Pre",  col=c("brown","darkgreen"))
+plot(classi_post, main="Classi NDVI Post", col=c("brown","darkgreen"))
+dev.off()
 
+freq_pre = freq(classi_pre)   # conta i pixel per ogni classe NDVI pre
+freq_post = freq(classi_post)  # conta i pixel per ogni classe NDVI post
+
+# Calcolo frequenza percentuale
+perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
+perc_post = freq_post$count * 100 / ncell(classi_post)
+
+# Creo tabella riassuntiva
+NDVI_classi = c("Non vegetazione", "Vegetazione")
+tabella = data.frame(
+  Classe = NDVI_classi,
+  Pre_incendio  = round(perc_pre, 2),
+  Post_incendio = round(perc_post, 2)
+)
+
+print(tabella)  # stampa tabella in console
+
+# ---- Grafico comparativo con ggplot2 ----
+library(reshape2)
+df_long = melt(tabella, id.vars = "Classe",
+                variable.name = "Periodo",
+                value.name = "Percentuale")
+
+library(ggplot2)
+ggplot(df_long, aes(x = Classe, y = Percentuale, fill = Periodo)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_viridis_d() +
+  ylim(0, 100) +
+  labs(title = "Copertura vegetazione (NDVI > 0.3)",
+       y = "Percentuale (%)", x = "Classe NDVI") +
+  theme_minimal()
+
+# Stato della vegetazione un anno dopo 
