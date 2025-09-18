@@ -12,6 +12,7 @@ library(imageRy) # Pacchetto per manipolare, visualizzare ed esportare immagini 
 library(viridis) # Pacchetto per cambiare le palette di colori anche per chi è affetto da colorblindness
 library(ggplot2) # Pacchetto per creare grafici ggplot
 library(patchwork) # Pacchetto per comporre più grafici ggplot insieme
+library(reshape2)
 
 # Imposto la working directory 
 setwd("~/Desktop/TELERILEVAMENTO_R")
@@ -142,4 +143,77 @@ ggplot(df_long, aes(x = Classe, y = Percentuale, fill = Periodo)) +
        y = "Percentuale (%)", x = "Classe NDVI") +
   theme_minimal()
 
-# Stato della vegetazione un anno dopo 
+# Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
+# E' stata cambiata la data aggiornandola a quella del 2023 (dal 5/08/2023 al 10/08/23)
+# Sono stati eseguiti gli stessi passaggi usati in precedenza
+setwd("~/Desktop/TELERILEVAMENTO_R") # Per impostare la working directory
+post2023=rast("PostIncendio_Agosto2023.tif") # Ho impostato l'immagine e nominata
+plot(post2023) # Ho scaricato l'immagine 
+
+# Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
+dvi_post2023 = post[["B8"]] - post[["B4"]]
+plot(dvi_post2023,main = "DVI Post-incendio 2023",col = inferno(100),axes = TRUE)
+ndvi_post = (post[["B8"]] - post[["B4"]]) / (post[["B8"]] + post[["B4"]])
+plot(ndvi_post2023,main = "NDVI Post-incendio 2023",col = inferno(100),axes = TRUE)
+
+# Allineamento raster (se necessario)
+ndvi_post2023_aligned = resample(ndvi_post2023, ndvi_post, method="bilinear")
+dvi_post2023_aligned = resample(dvi_post2023, dvi_post, method="bilinear")
+
+# Calcolo differenze
+ddvi_2022 <- dvi_pre - dvi_post
+ddvi_2023 <- dvi_post - dvi_post2023_aligned
+dndvi_2022 <- ndvi_pre - ndvi_post          # Pre vs post incendio 2022
+dndvi_2023 <- ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
+
+# Visualizzazione affiancata
+im.multiframe(2,3)  # 2 righe x 3 colonne
+# DVI
+plot(dvi_pre, main="DVI Pre-incendio 2022", col=viridis(100))
+plot(dvi_post, main="DVI Post-incendio 2022", col=viridis(100))
+plot(dvi_post2023_aligned, main="DVI Post 2023", col=viridis(100))
+plot(ddvi_2022, main="ΔDVI Pre vs Post 2022", col=inferno(100))
+plot(ddvi_2023, main="ΔDVI Post 2022 vs 2023", col=inferno(100))
+dev.off()
+
+# NDVI
+plot(ndvi_pre, main="NDVI Pre-incendio 2022", col=viridis(100))
+plot(ndvi_post, main="NDVI Post-incendio 2022", col=viridis(100))
+plot(ndvi_post2023_aligned, main="NDVI Post 2023", col=viridis(100))
+plot(dndvi_2022, main="ΔNDVI Pre vs Post 2022", col=inferno(100))
+plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
+
+# Analisi classificazione NDVI (facoltativo)
+soglia <- 0.3
+classi_pre <- classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+classi_post <- classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+classi_post2023 <- classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+
+# Frequenze percentuali
+freq_pre <- freq(classi_pre)
+freq_post <- freq(classi_post)
+freq_post2023 <- freq(classi_post2023)
+
+perc_pre <- freq_pre$count  * 100 / ncell(classi_pre)
+perc_post <- freq_post$count * 100 / ncell(classi_post)
+perc_post2023 <- freq_post2023$count * 100 / ncell(classi_post2023)
+
+tabella <- data.frame(Classe = c("Non vegetazione", "Vegetazione"),Pre_incendio = round(perc_pre,2),Post_incendio = round(perc_post,2),Post_2023 = round(perc_post2023,2))
+
+print(tabella)
+
+# Grafico comparativo con ggplot2
+
+df_long <- melt(tabella, id.vars="Classe",
+                variable.name="Periodo",
+                value.name="Percentuale")
+
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
+  geom_bar(stat="identity", position="dodge") +
+  scale_fill_viridis_d() +
+  ylim(0,100) +
+  labs(title="Copertura vegetazione (NDVI > 0.3)",
+       y="Percentuale (%)", x="Classe NDVI") +
+  theme_minimal()
+
+
