@@ -167,3 +167,72 @@ Export.image.toDrive({
 });
 
 // Entrambi i file sono state esportati su google drive e successivamente salvati sul computer e caricati in R
+
+// Scarico l'immmagine dopo un anno 
+function maskS2clouds(image) {
+  var qa = image.select('QA60');
+  var cloudBitMask = 1 << 10;
+  var cirrusBitMask = 1 << 11;
+
+  var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+               .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+
+  return image.updateMask(mask).divide(10000);
+}
+
+// ==============================================
+// Area di interesse
+// ==============================================
+var aoi = ee.Geometry.Rectangle([-6.5, 41.8, -6.1, 42.1]);
+Map.centerObject(aoi, 11);
+Map.addLayer(aoi, {color: 'red'}, 'AOI Sierra de la Culebra');
+
+// ==============================================
+// Caricamento Image Collection un anno dopo (2023)
+// ==============================================
+var collection_post_2023 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+  .filterBounds(aoi)
+  .filterDate('2023-08-05', '2023-08-10')       // stesso periodo, ma anno successivo
+  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
+  .map(maskS2clouds);
+
+// Numero di immagini disponibili
+print('Number of images in 2023 collection:', collection_post_2023.size());
+
+// ==============================================
+// Creazione median composite
+// ==============================================
+var composite_post_2023 = collection_post_2023.median().clip(aoi);
+
+// ==============================================
+// Visualizzazione sulla mappa (solo 3 bande per RGB)
+// ==============================================
+Map.centerObject(aoi, 10);
+
+// Prima immagine RGB 2023
+Map.addLayer(collection_post_2023.first(), {
+  bands: ['B4','B3','B2'],   // Solo RGB per visualizzazione
+  min: 0,
+  max: 0.3
+}, 'First 2023 image RGB');
+
+// Composite mediano RGB 2023
+Map.addLayer(composite_post_2023, {
+  bands: ['B4','B3','B2'],   // Solo RGB per visualizzazione
+  min: 0,
+  max: 0.3
+}, 'Median 2023 composite RGB');
+
+// ==============================================
+// Export su Google Drive (include B12)
+// ==============================================
+Export.image.toDrive({
+  image: composite_post_2023.select(['B2','B3','B4','B8','B12']),
+  description: 'SierraCulebra_PostIncendio_Agosto2023',
+  folder: 'GEE_exports',
+  fileNamePrefix: 'PostIncendio_Agosto2023',
+  region: aoi,
+  scale: 10,
+  crs: 'EPSG:4326',
+  maxPixels: 1e13
+});
