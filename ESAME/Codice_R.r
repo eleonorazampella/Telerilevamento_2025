@@ -161,10 +161,10 @@ ndvi_post2023_aligned = resample(ndvi_post2023, ndvi_post, method="bilinear")
 dvi_post2023_aligned = resample(dvi_post2023, dvi_post, method="bilinear")
 
 # Calcolo differenze
-ddvi_2022 <- dvi_pre - dvi_post
-ddvi_2023 <- dvi_post - dvi_post2023_aligned
-dndvi_2022 <- ndvi_pre - ndvi_post          # Pre vs post incendio 2022
-dndvi_2023 <- ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
+ddvi_2022 = dvi_pre - dvi_post
+ddvi_2023 = dvi_post - dvi_post2023_aligned
+dndvi_2022 = ndvi_pre - ndvi_post          # Pre vs post incendio 2022
+dndvi_2023 = ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
 
 # Visualizzazione affiancata
 im.multiframe(2,3)  # 2 righe x 3 colonne
@@ -184,27 +184,27 @@ plot(dndvi_2022, main="ΔNDVI Pre vs Post 2022", col=inferno(100))
 plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
 
 # Analisi classificazione NDVI (facoltativo)
-soglia <- 0.3
-classi_pre <- classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
-classi_post <- classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
-classi_post2023 <- classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+soglia = 0.3
+classi_pre = classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+classi_post = classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
+classi_post2023 = classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 
 # Frequenze percentuali
-freq_pre <- freq(classi_pre)
-freq_post <- freq(classi_post)
-freq_post2023 <- freq(classi_post2023)
+freq_pre = freq(classi_pre)
+freq_post = freq(classi_post)
+freq_post2023 = freq(classi_post2023)
 
-perc_pre <- freq_pre$count  * 100 / ncell(classi_pre)
-perc_post <- freq_post$count * 100 / ncell(classi_post)
-perc_post2023 <- freq_post2023$count * 100 / ncell(classi_post2023)
+perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
+perc_post = freq_post$count * 100 / ncell(classi_post)
+perc_post2023 = freq_post2023$count * 100 / ncell(classi_post2023)
 
-tabella <- data.frame(Classe = c("Non vegetazione", "Vegetazione"),Pre_incendio = round(perc_pre,2),Post_incendio = round(perc_post,2),Post_2023 = round(perc_post2023,2))
+tabella = data.frame(Classe = c("Non vegetazione", "Vegetazione"),Pre_incendio = round(perc_pre,2),Post_incendio = round(perc_post,2),Post_2023 = round(perc_post2023,2))
 
 print(tabella)
 
 # Grafico comparativo con ggplot2
 
-df_long <- melt(tabella, id.vars="Classe",
+df_long = melt(tabella, id.vars="Classe",
                 variable.name="Periodo",
                 value.name="Percentuale")
 
