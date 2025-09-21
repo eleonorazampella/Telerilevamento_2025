@@ -86,6 +86,9 @@ im.plotRGB(pre, r = 1, g = 2, b = 3, title = "Pre-incendio")  # Visualizzare l'i
 im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'immagine a veri colori 
 dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 ````
+<p align="center">
+  <img src="img/pre-post_inRGB.png" width="800" height="500"/>
+</p>
 
 ## Visualizzazione delle singole bande con dettaglio
  Viene specificata la banda, il colore e il titolo
