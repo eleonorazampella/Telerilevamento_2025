@@ -27,27 +27,45 @@ Le immagini satellitari provengono da [**Google Earth Engine**](https://eartheng
 > [!NOTE]
 > Il codice JavaScript utilizzato è quello fornito durante il corso ed è disponibile nel file Codice.js
 
+## Importazione e visualizzazione delle immagini 
+Una volta ottenute le immagini satellitari le carichiamo su R impostando una working directory:
 
-# CODICE IN R PER L'ELABORAZIONE DELLE IMMAGINI 
-
-# Le immagini sono scaricate da Google Earth Engine attraverso il codice di Rocio Beatriz Cortes Lobos e sono relative all'incendio avventuto a Sierra de la Culebra
-
-# Pacchetti richiesti e utilizzati
-library(terra) # Pacchetto per l'analisi spaziale dei dati con vettori e dati raster
-library(imageRy) # Pacchetto per manipolare, visualizzare ed esportare immagini raster in R
-library(viridis) # Pacchetto per cambiare le palette di colori anche per chi è affetto da colorblindness
-library(ggplot2) # Pacchetto per creare grafici ggplot
-library(patchwork) # Pacchetto per comporre più grafici ggplot insieme
-library(reshape2) # Trasformazione dati 
-
-# Impostazione della working directory 
+````r
 setwd("~/Desktop/TELERILEVAMENTO_R")
+````
+Successivamente sono stati presi installati i seguenti pacchetti in R
 
+````r
+library(terra)  
+library(imageRy)  
+library(viridis)  
+library(ggplot2)  
+library(patchwork)  
+library(reshape2)
+````
+
+A questo punto impostiamo i raster Sentinel-2 : 
+
+````r
 pre=rast("PreIncendio_Maggio2022.tif") # Importazione della prima immagine e la nominazione
 plot(pre) # Per visulaizzare l'immagine importata
+````
 
+> Questa rappresenta l'immagine prima dell'incendio nelle 4 bande
+
+````r
 post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
 plot(post) # Per visulizzare la seconda immagine
+````
+
+
+> Questa rappresenta l'immagine dopo l'incendio nelle 4 bande 
+
+
+
+
+
+
 
 # Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)
 # Confronto tra immagini pre e post incendio
