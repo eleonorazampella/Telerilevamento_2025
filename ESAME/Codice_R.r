@@ -12,7 +12,7 @@ library(imageRy) # Pacchetto per manipolare, visualizzare ed esportare immagini 
 library(viridis) # Pacchetto per cambiare le palette di colori anche per chi è affetto da colorblindness
 library(ggplot2) # Pacchetto per creare grafici ggplot
 library(patchwork) # Pacchetto per comporre più grafici ggplot insieme
-library(reshape2)
+library(reshape2) # Trasformazione dati 
 
 # Imposto la working directory 
 setwd("~/Desktop/TELERILEVAMENTO_R")
@@ -151,12 +151,12 @@ post2023=rast("PostIncendio_Agosto2023.tif") # Ho impostato l'immagine e nominat
 plot(post2023) # Ho scaricato l'immagine 
 
 # Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
-dvi_post2023 = post[["B8"]] - post[["B4"]]
+dvi_post2023 = post2023[["B8"]] - post2023[["B4"]]
 plot(dvi_post2023,main = "DVI Post-incendio 2023",col = inferno(100),axes = TRUE)
-ndvi_post = (post[["B8"]] - post[["B4"]]) / (post[["B8"]] + post[["B4"]])
+ndvi_post = (post2023[["B8"]] - post2023[["B4"]]) / (post2023[["B8"]] + post2023[["B4"]])
 plot(ndvi_post2023,main = "NDVI Post-incendio 2023",col = inferno(100),axes = TRUE)
 
-# Allineamento raster (se necessario)
+# Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.)
 ndvi_post2023_aligned = resample(ndvi_post2023, ndvi_post, method="bilinear")
 dvi_post2023_aligned = resample(dvi_post2023, dvi_post, method="bilinear")
 
@@ -183,24 +183,29 @@ plot(ndvi_post2023_aligned, main="NDVI Post 2023", col=viridis(100))
 plot(dndvi_2022, main="ΔNDVI Pre vs Post 2022", col=inferno(100))
 plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
 
-# Analisi classificazione NDVI (facoltativo)
+# Analisi classificazione NDVI 
 soglia = 0.3
 classi_pre = classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 classi_post = classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 classi_post2023 = classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 
 # Frequenze percentuali
-freq_pre = freq(classi_pre)
-freq_post = freq(classi_post)
-freq_post2023 = freq(classi_post2023)
+freq_pre = freq(classi_pre, useNA="no")  # Utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
+freq_post = freq(classi_post, useNA="no")
+freq_post2023 = freq(classi_post2023, useNA="no")
 
 perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
 perc_post = freq_post$count * 100 / ncell(classi_post)
 perc_post2023 = freq_post2023$count * 100 / ncell(classi_post2023)
 
-tabella = data.frame(Classe = c("Non vegetazione", "Vegetazione"),Pre_incendio = round(perc_pre,2),Post_incendio = round(perc_post,2),Post_2023 = round(perc_post2023,2))
-
-print(tabella)
+# Percentuale di copertura vegetale e non vegetale nelle diverse date considerate: pre-incendio (maggio 2022), post-incendio (agosto 2022) e un anno dopo (agosto 2023)
+tabella = data.frame(
+  Classe = c("Non vegetazione", "Vegetazione"),
+  Pre_incendio = round(perc_pre,2),
+  Post_incendio = round(perc_post,2),
+  Post_2023 = round(perc_post2023,2)
+)  
+print(tabella) # Per la visualizzazione della tabella
 
 # Grafico comparativo con ggplot2
 
@@ -209,11 +214,13 @@ df_long = melt(tabella, id.vars="Classe",
                 value.name="Percentuale")
 
 ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
-  geom_bar(stat="identity", position="dodge") +
-  scale_fill_viridis_d() +
-  ylim(0,100) +
-  labs(title="Copertura vegetazione (NDVI > 0.3)",
+  geom_bar(stat="identity", position="dodge") +            # barre affiancate
+  geom_text(aes(label=round(Percentuale,1)),               # aggiunge i numeri
+            position=position_dodge(width=0.9),            # allinea il testo sulle barre affiancate
+            vjust=-0.25,                                   # sposta leggermente sopra le barre
+            size=3) +                                      # dimensione testo
+  scale_fill_viridis_d() +                                 # palette viridis
+  ylim(0,100) +                                            # asse y da 0 a 100
+  labs(title="Copertura vegetazione (NDVI > 0.3)",         # titoli
        y="Percentuale (%)", x="Classe NDVI") +
-  theme_minimal()
-
-
+  theme_minimal()                                          # tema pulito
