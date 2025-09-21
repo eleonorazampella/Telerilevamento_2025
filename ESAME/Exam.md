@@ -62,7 +62,7 @@ post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e 
 plot(post) # Per visulizzare la seconda immagine
 ````
 <p align="center">
-  <img src="img/post-bande.png" width="600" height/>
+  <img src="img/post-bande.png" width="600"/>
 </p>
 
 > Questa rappresenta l'immagine dopo l'incendio nelle 5 bande
@@ -87,7 +87,7 @@ im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'
 dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/pre-post_inRGB.png" width="800" height="500"/>
+  <img src="img/pre-post_inRGB.png" width="800"/>
 </p>
 
 ## Visualizzazione delle singole bande con dettaglio
