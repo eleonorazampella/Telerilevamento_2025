@@ -57,30 +57,29 @@ plot(pre) # Per visulaizzare l'immagine importata
 post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
 plot(post) # Per visulizzare la seconda immagine
 ````
-
-
-> Questa rappresenta l'immagine dopo l'incendio nelle 4 bande 
-
-
-
-
-
-
+> Questa rappresenta l'immagine dopo l'incendio nelle 4 bande
 
 # Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)
-# Confronto tra immagini pre e post incendio
+
+## Confronto tra immagini pre e post incendio
+
+````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
 plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100)) 
 plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
+````
 
-# Visualizzazione delle immagini in RGB
+## Visualizzazione delle immagini in RGB
+
+````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
 im.plotRGB(pre, r = 1, g = 2, b = 3, title = "Pre-incendio")  # Visualizzare l'immagine a veri colori 
 im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'immagine a veri colori 
 dev.off() # Chiudere il pannello di Visualizzazione delle immagini
+````
 
-# Visualizzazione delle singole bande con dettaglio
+## Visualizzazione delle singole bande con dettaglio
 # Viene specificata la banda, il colore e il titolo
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
 plot(pre[[1]], col = magma(100), main = "Pre - Red") 
