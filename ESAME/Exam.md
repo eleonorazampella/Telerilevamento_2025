@@ -4,10 +4,12 @@
 # 1. Introduzione
 
 Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalemnte la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30000 ettari di terreno.
-Questo progetto si propone di analizzare l'impatto di questo evento sulla copertura vegetale pre e post incedio attraverso le immagini satellitari. Queste ultime sono relativea tre momenti temporali:
+Questo progetto si propone di analizzare l'impatto di questo evento sulla copertura vegetale pre e post incedio attraverso le immagini satellitari.
+Queste ultime sono relativea tre momenti temporali:
 - Pre-incendio: Maggio 2022
 - Post-incendio: Agosto 2022
 - Un anno dopo: Agosto 2023
+  
 Gli indici vegetazionali calcolati sono:
 - NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 - DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
@@ -18,10 +20,12 @@ Gli indici vegetazionali calcolati sono:
 L'obbiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
 
 # 3. Metodologia 
+
 ## Raccolta delle immagini 
+
 Le immagini satellitari provengono da [**Google Earth Engine**](https://earthengine.google.com/) selezionando l'area dell'incendio e le date indicate.
 > [!NOTE]
-> Il codice JavaScript utilizzato è quello fornito da Rocio Beatriz Cortes Lobos durante il corso ed è disponibile nel file Codice.js
+> Il codice JavaScript utilizzato è quello fornito durante il corso ed è disponibile nel file Codice.js
 
 
 # CODICE IN R PER L'ELABORAZIONE DELLE IMMAGINI 
