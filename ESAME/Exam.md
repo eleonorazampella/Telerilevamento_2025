@@ -51,13 +51,19 @@ pre=rast("PreIncendio_Maggio2022.tif") # Importazione della prima immagine e la 
 plot(pre) # Per visulaizzare l'immagine importata
 ````
 
-> Questa rappresenta l'immagine prima dell'incendio nelle 4 bande
+<p align="center">
+  <img src="img/pre-bande.png" width="600" height/>
+</p>
+
+> Questa rappresenta l'immagine prima dell'incendio nelle 5 bande
 
 ````r
 post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
 plot(post) # Per visulizzare la seconda immagine
 ````
-> Questa rappresenta l'immagine dopo l'incendio nelle 4 bande
+
+
+> Questa rappresenta l'immagine dopo l'incendio nelle 5 bande
 
 # Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)
 
