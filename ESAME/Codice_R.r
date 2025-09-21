@@ -214,7 +214,7 @@ df_long = melt(tabella, id.vars="Classe",
                 value.name="Percentuale")
 
 ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
-  geom_bar(stat="identity", position="dodge") +            # barre affiancate
+  geom_bar(stat="identity", position="dodge") +            # barre affiaancate 
   geom_text(aes(label=round(Percentuale,1)),               # aggiunge i numeri
             position=position_dodge(width=0.9),            # allinea il testo sulle barre affiancate
             vjust=-0.25,                                   # sposta leggermente sopra le barre
