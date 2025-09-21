@@ -14,29 +14,32 @@ library(ggplot2) # Pacchetto per creare grafici ggplot
 library(patchwork) # Pacchetto per comporre più grafici ggplot insieme
 library(reshape2) # Trasformazione dati 
 
-# Imposto la working directory 
+# Impostazione della working directory 
 setwd("~/Desktop/TELERILEVAMENTO_R")
 
-pre=rast("PreIncendio_Maggio2022.tif") # Importo la prima immagine e la nomino
+pre=rast("PreIncendio_Maggio2022.tif") # Importazione della prima immagine e la nominazione
 plot(pre) # Per visulaizzare l'immagine importata
 
-post=rast("PostIncendio_Agosto2022.tif") #Importo la seconda immagine e la nomino 
+post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
 plot(post) # Per visulizzare la seconda immagine
 
-#Visualizzo le immagini in RGB
-im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
-im.plotRGB(pre, r = 1, g = 2, b = 3, title = "Pre-incendio")  # Visualizzare l'immagine a veri colori 
-im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'immagine a veri colori 
-dev.off() # Chiudere il pannello di Visualizzazione delle immagini
-
-# Visualizzo le quattro bande separate (RGB e NIR) per entrambe le immagini
+# Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)
+# Confronto tra immagini pre e post incendio
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
 plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100)) 
 plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
 
+# Visualizzazione delle immagini in RGB
+im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
+im.plotRGB(pre, r = 1, g = 2, b = 3, title = "Pre-incendio")  # Visualizzare l'immagine a veri colori 
+im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'immagine a veri colori 
+dev.off() # Chiudere il pannello di Visualizzazione delle immagini
+
+# Visualizzazione delle singole bande con dettaglio
+# Viene specificata la banda, il colore e il titolo
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
-plot(pre[[1]], col = magma(100), main = "Pre - Red") #viene specificata la banda, il colore e il titolo
+plot(pre[[1]], col = magma(100), main = "Pre - Red") 
 plot(pre[[2]], col = magma(100), main = "Pre - Green")
 plot(pre[[3]], col = magma(100), main = "Pre - Blue")
 plot(pre[[4]], col = magma(100), main = "Pre - NIR")
@@ -47,7 +50,7 @@ plot(post[[3]], col = magma(100), main = "Post - Blue")
 plot(post[[4]], col = magma(100), main = "Post - NIR")
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 
-# Calcolo degli indici
+# Calcolo degli indici vegetazionali
 
 # Indice NBR (Normalized Burn Ratio)
 # L'indice sfrutta la banda NIR (B8) e la banda SWIR2 (B12)
@@ -56,7 +59,7 @@ nbr_pre = (pre[["B8"]] - pre[["B12"]]) / (pre[["B8"]] + pre[["B12"]]) # Calcolo 
 nbr_post = (post[["B8"]] - post[["B12"]]) / (post[["B8"]] + post[["B12"]]) # Calcolo NBR post-incendio
 dnbr = nbr_pre - nbr_post # Differenza NBR (dNBR)
 
-im.multiframe(1,3)  #  Visualizzare un pannello grafico con 1 righe e 3 colonne
+im.multiframe(1,3)  #  Visualizzazione di un pannello grafico con 1 righe e 3 colonne
 plot(nbr_pre, main="NBR Pre", col=viridis::viridis(100)) # Visualizzazione NBR pre-incendio
 plot(nbr_post, main="NBR Post", col=viridis::viridis(100)) # Visualizzazione NBR post-incendio
 plot(dnbr, main="dNBR", col=viridis::inferno(100)) # Visualizzazione della differenza NBR-Evidenzia l'impatto dell'incendio: valori positivi indicano perdita di vegetazione
@@ -67,7 +70,7 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 # Misura la quantità assoluta di vegetazione senza normalizzazione
 dvi_pre = pre[["B8"]] - pre[["B4"]] # Calcolo DVI pre-incendio
 dvi_post = post[["B8"]] - post[["B4"]] # Calcolo DVI post-incendio
-ddvi =d vi_pre - dvi_post # Differenza DVI
+ddvi =dvi_pre - dvi_post # Differenza DVI
 
 im.multiframe(1,3)
 plot(dvi_pre, main = "DVI Pre", col=viridis::viridis(100)) # Visualizzazione DVI pre-incendio 
@@ -82,7 +85,7 @@ ndvi_pre = (pre[["B8"]] - pre[["B4"]]) / (pre[["B8"]] + pre[["B4"]]) # Calcolo N
 ndvi_post = (post[["B8"]] - post[["B4"]]) / (post[["B8"]] + post[["B4"]]) # Calcolo NDVI post-incendio 
 dndvi = ndvi_pre - ndvi_post #differeza NDVI
 
-im.multiframe(1,3)  #  Visualizzare un pannello grafico con 1 righe e 3 colonne
+im.multiframe(1,3)  #  Visualizzazione di un pannello grafico con 1 righa e 3 colonne
 plot(ndvi_pre, main="NDVI Pre", col=viridis::viridis(100))   #  Visualizzazione NDVI prima dell'incendio
 plot(ndvi_post, main="NDVI Post", col=viridis::viridis(100)) # Visualizzazione NDVI dopo l'incendio
 plot(dndvi, main="ΔNDVI", col=viridis::inferno(100))        # Visualizzazione differenza NDVI (impatto incendio)
@@ -91,34 +94,25 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 # Analisi Multitemporale 
 
 # Classificazione NDVI
+soglia = 0.3 # Soglia NDVI per distinguere vegetazione/non vegetazione
 classi_pre=classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 classi_post=classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
-# Faccio la differenza tra l'immagine del 2024 e quella del 2025, scegliendo solo la banda B8 relativa al NIR
-nir_diff = pre[[4]]-post[[4]]
-ndvi_diff = ndvi_pre-ndvi_post
 
-im.multiframe(1,2)
-plot(nir_diff, col=mako(100), main="NIR")
-plot(ndvi_diff, col=mako(100), main="NDVI")
-
-# Scelgo soglia NDVI = 0.3 (tipica per distinguere vegetazione/non vegetazione)
-soglia = 0.3
-classi_pre = lassify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
-classi_post = classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
-
+# Visualizzazione delle classi 
 im.multiframe(1,2)
 plot(classi_pre,  main="Classi NDVI Pre",  col=c("brown","darkgreen"))
 plot(classi_post, main="Classi NDVI Post", col=c("brown","darkgreen"))
 dev.off()
 
-freq_pre = freq(classi_pre)   # conta i pixel per ogni classe NDVI pre
-freq_post = freq(classi_post)  # conta i pixel per ogni classe NDVI post
+# Calcolo frequenze percentuali 
+# Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
+freq_pre = freq(classi_pre, useNA="no")   # conta i pixel per ogni classe NDVI pre, utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
+freq_post = freq(classi_post,useNA="no")  # conta i pixel per ogni classe NDVI post, utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
 
-# Calcolo frequenza percentuale
 perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
 perc_post = freq_post$count * 100 / ncell(classi_post)
 
-# Creo tabella riassuntiva
+# Creazione tabella riassuntiva
 NDVI_classi = c("Non vegetazione", "Vegetazione")
 tabella = data.frame(
   Classe = NDVI_classi,
@@ -126,22 +120,27 @@ tabella = data.frame(
   Post_incendio = round(perc_post, 2)
 )
 
-print(tabella)  # stampa tabella in console
+print(tabella)  # visualizzazione tabella
 
-# ---- Grafico comparativo con ggplot2 ----
-library(reshape2)
+# Grafico comparativo
+
 df_long = melt(tabella, id.vars = "Classe",
                 variable.name = "Periodo",
                 value.name = "Percentuale")
 
-library(ggplot2)
-ggplot(df_long, aes(x = Classe, y = Percentuale, fill = Periodo)) +
-  geom_bar(stat = "identity", position = "dodge") +
+
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
+  geom_bar(stat="identity", position="dodge") +
+  geom_text(aes(label=round(Percentuale,1)),
+            position=position_dodge(width=0.9),
+            vjust=-0.25, size=3) +
   scale_fill_viridis_d() +
-  ylim(0, 100) +
-  labs(title = "Copertura vegetazione (NDVI > 0.3)",
-       y = "Percentuale (%)", x = "Classe NDVI") +
+  ylim(0,100) +
+  labs(title="Copertura vegetazione (NDVI > 0.3)",
+       subtitle="Percentuale di vegetazione e non vegetazione prima e dopo l'incendio",
+       y="Percentuale (%)", x="Classe NDVI") +
   theme_minimal()
+
 
 # Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
 # E' stata cambiata la data aggiornandola a quella del 2023 (dal 5/08/2023 al 10/08/23)
