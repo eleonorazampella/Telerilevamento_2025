@@ -259,6 +259,9 @@ setwd("~/Desktop/TELERILEVAMENTO_R") # Per impostare la working directory
 post2023=rast("PostIncendio_Agosto2023.tif") # Ho impostato l'immagine e nominata
 plot(post2023) # Ho scaricato l'immagine 
 ````
+<p align="center">
+  <img src="img/Post2023.png" width="600"/>
+</p>
 
 ## Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
 ````r
