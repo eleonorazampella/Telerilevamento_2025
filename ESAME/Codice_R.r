@@ -174,8 +174,9 @@ dndvi_2022 = ndvi_pre - ndvi_post          # Pre vs post incendio 2022
 dndvi_2023 = ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
 
 # Visualizzazione affiancata
-im.multiframe(2,3)  # 2 righe x 3 colonne
+
 # DVI
+im.multiframe(2,3)  # 2 righe x 3 colonne
 plot(dvi_pre, main="DVI Pre-incendio 2022", col=viridis(100))
 plot(dvi_post, main="DVI Post-incendio 2022", col=viridis(100))
 plot(dvi_post2023_aligned, main="DVI Post 2023", col=viridis(100))
@@ -184,11 +185,13 @@ plot(ddvi_2023, main="ΔDVI Post 2022 vs 2023", col=inferno(100))
 dev.off()
 
 # NDVI
+im.multiframe(2,3) 
 plot(ndvi_pre, main="NDVI Pre-incendio 2022", col=viridis(100))
 plot(ndvi_post, main="NDVI Post-incendio 2022", col=viridis(100))
 plot(ndvi_post2023_aligned, main="NDVI Post 2023", col=viridis(100))
 plot(dndvi_2022, main="ΔNDVI Pre vs Post 2022", col=inferno(100))
 plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
+dev.off()
 
 # Analisi classificazione NDVI 
 soglia = 0.3
