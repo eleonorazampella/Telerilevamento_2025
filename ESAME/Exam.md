@@ -1,10 +1,11 @@
-# ANALISI DELLA VEGETAZIONE PRE E POST INCENDIO NELLA SIERRA DE LA CULEBRA AVVENUTO NEL 2022 
-### Eleonora Zampella 
+# ANALISI PRE E POST INCENDIO DELLA VEGETAZIONE NELLA SIERRA DE LA CULEBRA(2022)🌱🔥
+### Esame di Telerilevamento Geo-Ecologico in R - 2025
+#### Eleonora Zampella
 
 # 1. Introduzione
 
-Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalemnte la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30000 ettari di terreno.
-Questo progetto si propone di analizzare l'impatto di questo evento sulla copertura vegetale pre e post incedio attraverso le immagini satellitari.
+Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalemnte la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30.000 ettari di terreno.
+Attraverso questo progetto analizzeremo l'impatto di questo evento sulla copertura vegetale pre e post incedio grazie alle immagini satellitari.
 Queste ultime sono relativea tre momenti temporali:
 - Pre-incendio: Maggio 2022
 - Post-incendio: Agosto 2022
@@ -14,7 +15,13 @@ Gli indici vegetazionali calcolati sono:
 - NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 - DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
 - NBR (Normalized Burn Ratio) – evidenzia aree bruciate
-  
+
+<p align="center">
+  <img src="img/Area di studio.png" width="1000" height/>
+</p>
+
+ >  Area di studio
+ 
 # 2. Obbiettivo del progetto 
 
 L'obbiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
