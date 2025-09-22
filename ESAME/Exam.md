@@ -267,7 +267,7 @@ plot(post2023) # Ho scaricato l'immagine
 ````r
 dvi_post2023 = post2023[["B8"]] - post2023[["B4"]]
 plot(dvi_post2023,main = "DVI Post-incendio 2023",col = inferno(100),axes = TRUE)
-ndvi_post = (post2023[["B8"]] - post2023[["B4"]]) / (post2023[["B8"]] + post2023[["B4"]])
+ndvi_post2023 = (post2023[["B8"]] - post2023[["B4"]]) / (post2023[["B8"]] + post2023[["B4"]])
 plot(ndvi_post2023,main = "NDVI Post-incendio 2023",col = inferno(100),axes = TRUE)
 ````
 
