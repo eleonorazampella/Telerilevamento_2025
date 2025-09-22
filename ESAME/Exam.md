@@ -350,6 +350,11 @@ tabella = data.frame(
 )  
 print(tabella) # Per la visualizzazione della tabella
 ````
+| Classe         | Pre_incendio | Post_incendio | Post_2023 |
+|----------------|-------------:|--------------:|----------:|
+| Non vegetazione|       7.00 % |       46.36 % |   31.10 % |
+| Vegetazione    |      92.96 % |       53.59 % |   68.85 % |
+
 
 ## Grafico comparativo con ggplot2
 
