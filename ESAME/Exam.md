@@ -292,11 +292,9 @@ dndvi_2023 = ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
 ````
 
 ## Visualizzazione affiancata
-````r
-im.multiframe(2,3)  # 2 righe x 3 colonne
-````
 ## DVI
 ````r
+im.multiframe(2,3)  # 2 righe x 3 colonne
 plot(dvi_pre, main="DVI Pre-incendio 2022", col=viridis(100))
 plot(dvi_post, main="DVI Post-incendio 2022", col=viridis(100))
 plot(dvi_post2023_aligned, main="DVI Post 2023", col=viridis(100))
@@ -304,15 +302,21 @@ plot(ddvi_2022, main="ΔDVI Pre vs Post 2022", col=inferno(100))
 plot(ddvi_2023, main="ΔDVI Post 2022 vs 2023", col=inferno(100))
 dev.off()
 ````
+<p align="center">
+  <img src="img/DVIprepost2023.png" width="600"/>
+</p>
 
 ## NDVI
 ````r
+im.multiframe(2,3)  # 2 righe x 3 colonne
 plot(ndvi_pre, main="NDVI Pre-incendio 2022", col=viridis(100))
 plot(ndvi_post, main="NDVI Post-incendio 2022", col=viridis(100))
 plot(ndvi_post2023_aligned, main="NDVI Post 2023", col=viridis(100))
 plot(dndvi_2022, main="ΔNDVI Pre vs Post 2022", col=inferno(100))
 plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
 ````
+  <img src="img/NDVIprepost2023.png" width="600"/>
+</p>
 
 ## Analisi classificazione NDVI 
 ````r
