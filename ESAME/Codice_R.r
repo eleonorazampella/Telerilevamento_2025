@@ -157,9 +157,11 @@ plot(post2023) # Ho scaricato l'immagine
 
 # Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
 dvi_post2023 = post2023[["B8"]] - post2023[["B4"]]
-plot(dvi_post2023,main = "DVI Post-incendio 2023",col = inferno(100),axes = TRUE)
 ndvi_post2023 = (post2023[["B8"]] - post2023[["B4"]]) / (post2023[["B8"]] + post2023[["B4"]])
+im.multiframe(1,2)
+plot(dvi_post2023,main = "DVI Post-incendio 2023",col = inferno(100),axes = TRUE)
 plot(ndvi_post2023,main = "NDVI Post-incendio 2023",col = inferno(100),axes = TRUE)
+dev.off()
 
 # Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.)
 ndvi_post2023_aligned = resample(ndvi_post2023, ndvi_post, method="bilinear")
