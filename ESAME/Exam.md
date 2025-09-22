@@ -194,6 +194,9 @@ plot(classi_pre,  main="Classi NDVI Pre",  col=c("red","darkgreen"))
 plot(classi_post, main="Classi NDVI Post", col=c("red","darkgreen"))
 dev.off()
 ````
+<p align="center">
+  <img src="img/pre-bande.png" width="900" height/>
+</p>
 
 # Calcolo frequenze percentuali 
 Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
