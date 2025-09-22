@@ -87,8 +87,10 @@ im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'
 dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/pre-post_inRGB.png" width="800"/>
+  <img src="img/PrePost_RGB.png" width="600"/>
 </p>
+
+> Dalle immagini è visibile la differenza tra il prima e il dopo l'incendio 
 
 ## Visualizzazione delle singole bande con dettaglio
  Viene specificata la banda, il colore e il titolo
