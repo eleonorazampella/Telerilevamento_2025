@@ -251,6 +251,12 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
 <p align="center">
   <img src="img/Veg-noVeg.png" width="900" height/>
 </p>
+>[!IMPORTANT]
+
+
+
+
+
 
 # Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
 E' stata cambiata la data aggiornandola a quella del 2023 (dal 5/08/2023 al 10/08/23)
