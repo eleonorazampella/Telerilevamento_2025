@@ -59,7 +59,7 @@ plot(pre) # Per visulaizzare l'immagine importata
 ````
 
 <p align="center">
-  <img src="img/pre-bande.png" width="600" height/>
+  <img src="img/preincendio.png" width="800" height/>
 </p>
 
 > Questa rappresenta l'immagine prima dell'incendio nelle 5 bande
@@ -69,7 +69,7 @@ post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e 
 plot(post) # Per visulizzare la seconda immagine
 ````
 <p align="center">
-  <img src="img/post-bande.png" width="600"/>
+  <img src="img/postincendio.png" width="800"/>
 </p>
 
 > Questa rappresenta l'immagine dopo l'incendio nelle 5 bande
