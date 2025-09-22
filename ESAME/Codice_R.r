@@ -123,6 +123,11 @@ tabella = data.frame(
 
 print(tabella)  # visualizzazione tabella
 
+ Classe Pre_incendio Post_incendio
+1 Non vegetazione         7.00         46.36
+2     Vegetazione        92.96         53.59
+
+
 # Grafico comparativo
 
 df_long = melt(tabella, id.vars = "Classe",
