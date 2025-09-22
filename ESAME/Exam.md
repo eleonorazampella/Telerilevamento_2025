@@ -132,7 +132,7 @@ plot(dnbr, main="dNBR", col=viridis::inferno(100)) # Visualizzazione della diffe
 dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/NBR.png" width="900"/>
+  <img src="img/NBR.png" width="1000"/>
 </p>
 
 ## Indice DVI ((Difference Vegetation Index))
@@ -153,7 +153,7 @@ plot(ddvi, main = "ΔDVI", col=viridis::inferno(100)) # Visualizzazione della di
 dev.off()
 ````
 <p align="center">
-  <img src="img/DVI.png" width="900"/>
+  <img src="img/DVI.png" width="1000"/>
 </p>
 
 # Indice NDVI (Normalized Difference Vegetation Index)
@@ -173,7 +173,7 @@ plot(dndvi, main="ΔNDVI", col=viridis::inferno(100))        # Visualizzazione d
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/NDVI.png" width="900"/>
+  <img src="img/NDVI.png" width="1000"/>
 </p>
 
 # Analisi Multitemporale 
@@ -195,7 +195,7 @@ plot(classi_post, main="Classi NDVI Post", col=c("red","darkgreen"))
 dev.off()
 ````
 <p align="center">
-  <img src="img/pre-bande.png" width="900" height/>
+  <img src="img/classiNDVI.png" width="900" height/>
 </p>
 
 # Calcolo frequenze percentuali 
