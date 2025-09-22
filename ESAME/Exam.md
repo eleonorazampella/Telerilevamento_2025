@@ -2,7 +2,7 @@
 ### Esame di Telerilevamento Geo-Ecologico in R - 2025
 #### Eleonora Zampella
 
-# 1. Introduzione
+# 1. Introduzione📑
 
 Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalemnte la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30.000 ettari di terreno.
 Attraverso questo progetto analizzeremo l'impatto di questo evento sulla copertura vegetale pre e post incedio grazie alle immagini satellitari.
@@ -22,19 +22,19 @@ Gli indici vegetazionali calcolati sono:
 
  >  Area di studio
  
-# 2. Obbiettivo del progetto 
+# 2. Obbiettivo del progetto🎯
 
 L'obbiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
 
-# 3. Metodologia 
+# 3. Metodologia🛰️ 
 
-## Raccolta delle immagini 
+## Raccolta delle immagini📂 
 
 Le immagini satellitari provengono da [**Google Earth Engine**](https://earthengine.google.com/) selezionando l'area dell'incendio e le date indicate.
 > [!NOTE]
 > Il codice JavaScript utilizzato è quello fornito durante il corso ed è disponibile nel file Codice.js
 
-## Importazione e visualizzazione delle immagini 
+## Importazione e visualizzazione delle immagini💻 
 Una volta ottenute le immagini satellitari le carichiamo su R impostando una working directory:
 
 ````r
@@ -74,9 +74,9 @@ plot(post) # Per visulizzare la seconda immagine
 
 > Questa rappresenta l'immagine dopo l'incendio nelle 5 bande
 
-# Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)
+# Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)🎨
 
-## Confronto tra immagini pre e post incendio
+## Confronto tra immagini pre e post incendio🔥
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
@@ -120,7 +120,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/PrePost_Bande.png" width="1000"/>
 </p>
 
-# Calcolo degli indici vegetazionali
+# Calcolo degli indici vegetazionali🌈
 
 ## Indice NBR (Normalized Burn Ratio)
 - L'indice sfrutta la banda NIR (B8) e la banda SWIR2 (B12)
@@ -184,7 +184,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/NDVI.png" width="2000"/>
 </p>
 
-# Analisi Multitemporale 
+# Analisi Multitemporale⏳
 
 ## Classificazione NDVI
 
