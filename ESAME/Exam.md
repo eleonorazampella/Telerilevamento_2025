@@ -108,6 +108,9 @@ plot(post[[3]], col = magma(100), main = "Post - Blue")
 plot(post[[4]], col = magma(100), main = "Post - NIR")
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
+<p align="center">
+  <img src="img/PrePost_Bande.png" width="1000"/>
+</p>
 
 # Calcolo degli indici vegetazionali
 
@@ -129,7 +132,7 @@ plot(dnbr, main="dNBR", col=viridis::inferno(100)) # Visualizzazione della diffe
 dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/nbr.png" width="800"/>
+  <img src="img/nbr.png" width="900"/>
 </p>
 
 ## Indice DVI ((Difference Vegetation Index))
@@ -149,6 +152,9 @@ plot(dvi_post, main = "DVI Post", col=viridis::viridis(100)) # Visualizzazione D
 plot(ddvi, main = "ΔDVI", col=viridis::inferno(100)) # Visualizzazione della differenza DVI pre e post incendio 
 dev.off()
 ````
+<p align="center">
+  <img src="img/DVI.png" width="900"/>
+</p>
 
 # Indice NDVI (Normalized Difference Vegetation Index)
 - (NIR - RED) / (NIR + RED)
@@ -166,6 +172,9 @@ plot(ndvi_post, main="NDVI Post", col=viridis::viridis(100)) # Visualizzazione N
 plot(dndvi, main="ΔNDVI", col=viridis::inferno(100))        # Visualizzazione differenza NDVI (impatto incendio)
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
+<p align="center">
+  <img src="img/NDVI.png" width="900"/>
+</p>
 
 # Analisi Multitemporale 
 
