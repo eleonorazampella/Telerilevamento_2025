@@ -233,30 +233,13 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
   geom_text(aes(label=round(Percentuale,1)),               # aggiunge i numeri
             position=position_dodge(width=0.9),            # allinea il testo sulle barre affiancate
             vjust=-0.25,                                   # sposta leggermente sopra le barre
-            size=3) +       
-scale_fill_manual(values = c("Pre_incendio" = "darkorchid4",
-                                "Post_incendio" = "yellow",
-                               "Post_2023" = "orange"))                                # dimensione testo
-                                                             # palette viridis
+            size=3) +                                      # dimensione testo
+  scale_fill_manual(values = c("Pre_incendio" = "darkorchid4",
+                               "Post_incendio" = "yellow",
+                               "Post_2023" = "orange")) +                                 # palette viridis
   ylim(0,100) +                                            # asse y da 0 a 100
   labs(title="Copertura vegetazione (NDVI > 0.3)",         # titoli
        y="Percentuale (%)", x="Classe NDVI") +
   theme_minimal()                                          # tema pulito
 
-library(ggplot2)
-
-ggplot(df_long, aes(x = Classe, y = Percentuale, fill = Periodo)) +
-  geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +  # barre affiancate
-  geom_text(aes(label = round(Percentuale, 1)),
-            position = position_dodge(width = 0.9),
-            vjust = -0.25,
-            size = 3) +
-  scale_fill_manual(values = c("Pre_incendio" = "darkorchid4",
-                               "Post_incendio" = "yellow",
-                               "Post_2023" = "orange")) +
-  coord_cartesian(ylim = c(0, 100)) +  # coord_cartesian mantiene le etichette senza tagliare le barre
-  labs(title = "Copertura vegetazione (NDVI > 0.3)",
-       y = "Percentuale (%)",
-       x = "Classe NDVI") +
-  theme_minimal()
 
