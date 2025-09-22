@@ -139,7 +139,7 @@ plot(dnbr, main="dNBR", col=viridis::inferno(100)) # Visualizzazione della diffe
 dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/NBR.png" width="1000"/>
+  <img src="img/NBR.png" width="2000"/>
 </p>
 
 ## Indice DVI ((Difference Vegetation Index))
@@ -160,7 +160,7 @@ plot(ddvi, main = "ΔDVI", col=viridis::inferno(100)) # Visualizzazione della di
 dev.off()
 ````
 <p align="center">
-  <img src="img/DVI.png" width="1000"/>
+  <img src="img/DVI.png" width="2000"/>
 </p>
 
 # Indice NDVI (Normalized Difference Vegetation Index)
@@ -180,7 +180,7 @@ plot(dndvi, main="ΔNDVI", col=viridis::inferno(100))        # Visualizzazione d
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/NDVI.png" width="1000"/>
+  <img src="img/NDVI.png" width="2000"/>
 </p>
 
 # Analisi Multitemporale 
@@ -318,7 +318,7 @@ plot(ddvi_2023, main="ΔDVI Post 2022 vs 2023", col=inferno(100))
 dev.off()
 ````
 <p align="center">
-  <img src="img/DVIprepost2023.png" width="600"/>
+  <img src="img/DVIprepost2023.png" width="1000"/>
 </p>
 
 ## NDVI
@@ -330,7 +330,8 @@ plot(ndvi_post2023_aligned, main="NDVI Post 2023", col=viridis(100))
 plot(dndvi_2022, main="ΔNDVI Pre vs Post 2022", col=inferno(100))
 plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
 ````
-  <img src="img/NDVIprepost2023.png" width="600"/>
+ <p align="center">
+  <img src="img/NDVIprepost2023.png" width="1000"/>
 </p>
 
 ## Analisi classificazione NDVI 
