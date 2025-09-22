@@ -29,6 +29,7 @@ im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne
 plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100)) 
 plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
+# Tutte le immagini sono state salvate in png tipo png("img/pre-bande.png", width = 2000, height = 1500, res = 300)
 
 # Visualizzazione delle immagini in RGB
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
