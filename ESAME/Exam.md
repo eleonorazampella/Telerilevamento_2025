@@ -202,8 +202,8 @@ dev.off()
 Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
 
 ````r
-freq_pre = freq(classi_pre, useNA="no")   # conta i pixel per ogni classe NDVI pre, utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
-freq_post = freq(classi_post,useNA="no")  # conta i pixel per ogni classe NDVI post, utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
+freq_pre = freq(classi_pre)   # conta i pixel per ogni classe NDVI pre
+freq_post = freq(classi_post)  # conta i pixel per ogni classe NDVI post
 ````
 
 ````r
@@ -222,6 +222,9 @@ tabella = data.frame(
 
 print(tabella)  # visualizzazione tabella
 ````
+ Classe Pre_incendio Post_incendio
+1 Non vegetazione         7.00         46.36
+2     Vegetazione        92.96         53.59
 
 ## Grafico comparativo
 
