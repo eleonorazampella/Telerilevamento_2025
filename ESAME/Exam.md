@@ -132,7 +132,7 @@ plot(dnbr, main="dNBR", col=viridis::inferno(100)) # Visualizzazione della diffe
 dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 ````
 <p align="center">
-  <img src="img/nbr.png" width="900"/>
+  <img src="img/NBR.png" width="900"/>
 </p>
 
 ## Indice DVI ((Difference Vegetation Index))
