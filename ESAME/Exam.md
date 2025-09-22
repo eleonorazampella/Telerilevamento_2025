@@ -328,9 +328,9 @@ classi_post2023 = classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, so
 
 ## Frequenze percentuali
 ````r
-freq_pre = freq(classi_pre, useNA="no")  # Utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
-freq_post = freq(classi_post, useNA="no")
-freq_post2023 = freq(classi_post2023, useNA="no")
+freq_pre = freq(classi_pre)  # Utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
+freq_post = freq(classi_post)
+freq_post2023 = freq(classi_post2023)
 
 perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
 perc_post = freq_post$count * 100 / ncell(classi_post)
