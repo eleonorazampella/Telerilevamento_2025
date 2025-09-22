@@ -275,7 +275,7 @@ post2023=rast("PostIncendio_Agosto2023.tif") # Ho impostato l'immagine e nominat
 plot(post2023) # Ho scaricato l'immagine 
 ````
 <p align="center">
-  <img src="img/Post2023.png" width="600"/>
+  <img src="img/Post2023.png" width="1000"/>
 </p>
 
 ## Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
