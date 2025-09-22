@@ -369,7 +369,7 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
   theme_minimal()                                          # tema pulito
 ````
 <p align="center">
-  <img src="img/grafico2023.png" width="900" height/>
+  <img src="img/2grafico2023.png" width="900" height/>
 </p>
 
 # Conclusioni 
