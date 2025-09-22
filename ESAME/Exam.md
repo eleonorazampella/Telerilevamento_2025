@@ -100,7 +100,6 @@ dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 > Dalle immagini è visibile la differenza tra il prima e il dopo l'incendio 
 
 ## Visualizzazione delle singole bande con dettaglio
- Viene specificata la banda, il colore e il titolo
 
 ````r
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
@@ -115,6 +114,8 @@ plot(post[[3]], col = magma(100), main = "Post - Blue")
 plot(post[[4]], col = magma(100), main = "Post - NIR")
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
+> Viene specificata la banda, il colore e il titolo
+
 <p align="center">
   <img src="img/PrePost_Bande.png" width="1000"/>
 </p>
