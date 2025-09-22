@@ -128,6 +128,9 @@ plot(nbr_post, main="NBR Post", col=viridis::viridis(100)) # Visualizzazione NBR
 plot(dnbr, main="dNBR", col=viridis::inferno(100)) # Visualizzazione della differenza NBR-Evidenzia l'impatto dell'incendio: valori positivi indicano perdita di vegetazione
 dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 ````
+<p align="center">
+  <img src="img/nbr.png" width="800"/>
+</p>
 
 ## Indice DVI ((Difference Vegetation Index))
 -  NIR - RED
