@@ -200,9 +200,9 @@ classi_post = classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), nco
 classi_post2023 = classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 
 # Frequenze percentuali
-freq_pre = freq(classi_pre, useNA="no")  # Utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
-freq_post = freq(classi_post, useNA="no")
-freq_post2023 = freq(classi_post2023, useNA="no")
+freq_pre = freq(classi_pre)  
+freq_post = freq(classi_post)
+freq_post2023 = freq(classi_post2023)
 
 perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
 perc_post = freq_post$count * 100 / ncell(classi_post)
@@ -216,6 +216,11 @@ tabella = data.frame(
   Post_2023 = round(perc_post2023,2)
 )  
 print(tabella) # Per la visualizzazione della tabella
+
+           Classe   Pre_incendio Post_incendio Post_2023
+1 Non vegetazione         7.00         46.36     31.10
+2     Vegetazione        92.96         53.59     68.85
+
 
 # Grafico comparativo con ggplot2
 
