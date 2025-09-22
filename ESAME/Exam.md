@@ -368,6 +368,9 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
        y="Percentuale (%)", x="Classe NDVI") +
   theme_minimal()                                          # tema pulito
 ````
+<p align="center">
+  <img src="img/grafico2023.png" width="900" height/>
+</p>
 
 # Conclusioni 
 In conclusione possiamo affermare che l'incendio del 2022 ha ridotto significativamente la vegetazione nella Sierra de la Culebra. Nel 2023 si osserva un leggero recupero, ma alcune aree restano degradate. L’analisi multitemporale e gli indici NDVI, DVI e NBR evidenziano chiaramente l’impatto e le zone più colpite.
