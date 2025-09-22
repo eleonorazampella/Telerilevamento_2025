@@ -190,8 +190,8 @@ classi_post=classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=
 
 ````r
 im.multiframe(1,2)
-plot(classi_pre,  main="Classi NDVI Pre",  col=c("brown","darkgreen"))
-plot(classi_post, main="Classi NDVI Post", col=c("brown","darkgreen"))
+plot(classi_pre,  main="Classi NDVI Pre",  col=c("red","darkgreen"))
+plot(classi_post, main="Classi NDVI Post", col=c("red","darkgreen"))
 dev.off()
 ````
 
