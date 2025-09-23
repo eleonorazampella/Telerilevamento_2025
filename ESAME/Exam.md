@@ -123,8 +123,8 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 # 4. Calcolo degli indici vegetazionali🌈
 
 ## Indice NBR (Normalized Burn Ratio)
-- L'indice sfrutta la banda NIR (B8) e la banda SWIR2 (B12)
-- L'indice serve a visualizzare le aree bruciate: valori più bassi indicano vegetazione compromessa
+L'indice sfrutta la banda NIR (B8) sensibile alla vegetazione sana e la banda SWIR2 (B12) sensibile all’umidità e alle superfici bruciate.
+Attraverso l'indice riesco a visualizzare le aree bruciate: valori più bassi indicano vegetazione compromessa. 
 
 ````r
 nbr_pre = (pre[["B8"]] - pre[["B12"]]) / (pre[["B8"]] + pre[["B12"]]) # Calcolo NBR pre-incendio
@@ -143,9 +143,14 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/NBR.png" width="2000"/>
 </p>
 
-## Indice DVI ((Difference Vegetation Index))
--  NIR - RED
-- Misura la quantità assoluta di vegetazione senza normalizzazione
+ > **Commento**
+
+ > Prima dell'incendio si osservano valori più elevati coerenti con la vegetazione viva e rigogliosa; 
+ > Dopo l'incendio i valori si riducono nelle aree bruciate, evidenziando la perdita di vegetazione;
+ > La mappa differenziale mette in evidenza l’impatto del fuoco: valori positivi corrispondono a zone dove la vegetazione è stata compromessa, permettendo di localizzare e quantificare le aree più danneggiate.
+
+## Indice DVI (Difference Vegetation Index)
+L’indice DVI (Difference Vegetation Index) è calcolato come differenza tra la riflettanza nel vicino infrarosso (NIR, banda B8) e quella nel rosso (RED, banda B4). Misura la quantità assoluta di vegetazione senza normalizzazione
 
 ````r
 dvi_pre = pre[["B8"]] - pre[["B4"]] # Calcolo DVI pre-incendio
