@@ -43,12 +43,12 @@ setwd("~/Desktop/TELERILEVAMENTO_R")
 Successivamente sono stati presi installati i seguenti pacchetti in R
 
 ````r
-library(terra)  
-library(imageRy)  
-library(viridis)  
-library(ggplot2)  
-library(patchwork)  
-library(reshape2)
+library(terra)      # Per lavorare con raster e immagini satellitari
+library(imageRy)    # Funzioni di visualizzazione rapide
+library(viridis)    # Palette di colori
+library(ggplot2)    # Pacchetto per la creazione di grafici
+library(patchwork)  # Pacchetto per l'unione dei grafici creati con ggplot2
+library(reshape2)   # Riorganizzazioni dei dati tabellari 
 ````
 
 A questo punto impostiamo i raster Sentinel-2 : 
