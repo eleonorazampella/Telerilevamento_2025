@@ -85,7 +85,7 @@ plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
 ````
 
-## Visualizzazione delle immagini in RGB
+## Visualizzazione delle immagini in RGB 
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
