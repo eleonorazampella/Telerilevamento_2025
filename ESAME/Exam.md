@@ -62,7 +62,7 @@ plot(pre) # Per visulaizzare l'immagine importata
   <img src="img/preincendio.png" width="800" height/>
 </p>
 
-> Questa rappresenta l'immagine prima dell'incendio nelle 5 bande
+> Immagine prima dell'incendio nelle 5 bande
 
 ````r
 post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
@@ -72,11 +72,11 @@ plot(post) # Per visulizzare la seconda immagine
   <img src="img/postincendio.png" width="800"/>
 </p>
 
-> Questa rappresenta l'immagine dopo l'incendio nelle 5 bande
+> Immagine dopo l'incendio nelle 5 bande
 
-# Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)🎨
+## Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)🎨
 
-## Confronto tra immagini pre e post incendio🔥
+### Confronto tra immagini pre e post incendio🔥
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
@@ -85,7 +85,7 @@ plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
 dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
 ````
 
-## Visualizzazione delle immagini in RGB 
+### Visualizzazione delle immagini in RGB 
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
@@ -99,7 +99,7 @@ dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 
 > Dalle immagini è visibile la differenza tra il prima e il dopo l'incendio 
 
-## Visualizzazione delle singole bande con dettaglio
+### Visualizzazione delle singole bande con dettaglio
 
 ````r
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
@@ -120,7 +120,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/PrePost_Bande.png" width="1000"/>
 </p>
 
-# Calcolo degli indici vegetazionali🌈
+# 4. Calcolo degli indici vegetazionali🌈
 
 ## Indice NBR (Normalized Burn Ratio)
 - L'indice sfrutta la banda NIR (B8) e la banda SWIR2 (B12)
@@ -164,7 +164,7 @@ dev.off()
   <img src="img/DVI.png" width="2000"/>
 </p>
 
-# Indice NDVI (Normalized Difference Vegetation Index)
+## Indice NDVI (Normalized Difference Vegetation Index)
 - (NIR - RED) / (NIR + RED)
 - Misura la salute della vegetazione: valori vicini a 1 indicano vegetazione sana
 
@@ -184,7 +184,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/NDVI.png" width="2000"/>
 </p>
 
-# Analisi Multitemporale⏳
+# 5. Analisi Multitemporale⏳
 
 ## Classificazione NDVI
 
@@ -194,7 +194,7 @@ classi_pre=classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3
 classi_post=classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 ````
 
-# Visualizzazione delle classi 
+## Visualizzazione delle classi 
 
 ````r
 im.multiframe(1,2)
@@ -206,7 +206,7 @@ dev.off()
   <img src="img/classiNDVI.png" width="900" height/>
 </p>
 
-# Calcolo frequenze percentuali 
+## Calcolo frequenze percentuali 
 Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
 
 ````r
@@ -236,7 +236,7 @@ print(tabella)  # visualizzazione tabella
 | Vegetazione    |      92.96 % |       53.59 % |
 
 
-## Grafico comparativo
+## Grafico comparativo📉
 
 ````r
 df_long = melt(tabella, id.vars = "Classe",
@@ -261,12 +261,8 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
 </p>
 >[!IMPORTANT]
 
-
-
-
-
-
-# Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
+# 6. Analisi a un anno dall’incendio (Agosto 2023)🌿
+Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
 E' stata cambiata la data aggiornandola a quella del 2023 (dal 5/08/2023 al 10/08/23)
 Sono stati eseguiti gli stessi passaggi usati in precedenza
 
@@ -371,7 +367,7 @@ print(tabella) # Per la visualizzazione della tabella
 | Vegetazione    |      92.96 % |       53.59 % |   68.85 % |
 
 
-## Grafico comparativo con ggplot2
+## Grafico comparativo con ggplot2📉
 
 ````r
 df_long = melt(tabella, id.vars="Classe",
@@ -394,7 +390,7 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
   <img src="img/2grafico2023.png" width="900" height/>
 </p>
 
-# Conclusioni 
+# 7. Conclusioni📝
 In conclusione possiamo affermare che l'incendio del 2022 ha ridotto significativamente la vegetazione nella Sierra de la Culebra. Nel 2023 si osserva un leggero recupero, ma alcune aree restano degradate. L’analisi multitemporale e gli indici NDVI, DVI e NBR evidenziano chiaramente l’impatto e le zone più colpite.
 
-# Grazie per l'attenzione!
+# Grazie per l'attenzione!😃 
