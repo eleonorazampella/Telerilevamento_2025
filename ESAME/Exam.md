@@ -7,8 +7,8 @@
 Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalemnte la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30.000 ettari di terreno.
 La zona, caratterizzata da foreste di pino, quercia e sughera, rappresenta un ecosistema fragile e ad elevato rischio incendi a causa del clima mediterraneo e delle ondate di calore sempre più frequenti.
 In questo progetto analizziamo l’impatto dell’incendio sulla vegetazione attraverso immagini satellitari Sentinel-2 in tre momenti temporali:
-- Pre-incendio: Maggio 2022
-- Post-incendio: Agosto 2022
+- Pre-incendio: 25-30 Maggio 2022
+- Post-incendio: 5-10 Agosto 2022
 - Un anno dopo: Agosto 2023
   
 Gli indici vegetazionali calcolati sono:
