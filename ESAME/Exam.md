@@ -428,7 +428,9 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +   # Crea Grafico a
             position=position_dodge(width=0.9),                 # Allinea il testo sulle barre affiancate
             vjust=-0.25,                                        # Sposta leggermente sopra le barre
             size=3) +                                           # Dimensione testo
-  scale_fill_viridis_d() +                                      # Colori distinti per i periodi
+  scale_fill_manual(values = c("Pre_incendio" = "darkorchid4",  # Colori distinti per i periodi
+                               "Post_incendio" = "yellow",
+                               "Post_2023" = "orange"))                                       
   ylim(0,100) +                                                 # Limiti asse Y 0-100%
   labs(title="Copertura vegetazione (NDVI > 0.3)",              # Titoli ed etichette
        y="Percentuale (%)", x="Classe NDVI") +
