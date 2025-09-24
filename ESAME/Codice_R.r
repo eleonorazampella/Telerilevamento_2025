@@ -22,12 +22,6 @@ plot(pre) # Per visulaizzare l'immagine importata
 post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
 plot(post) # Per visulizzare la seconda immagine
 
-# Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)
-# Confronto tra immagini pre e post incendio
-im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
-plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100)) 
-plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
-dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
 # Tutte le immagini sono state salvate in png tipo png("img/pre-bande.png", width = 2000, height = 1500, res = 300)
 
 # Visualizzazione delle immagini in RGB
@@ -36,7 +30,7 @@ im.plotRGB(pre, r = 1, g = 2, b = 3, title = "Pre-incendio")  # Visualizzare l'i
 im.plotRGB(post, r = 1, g = 2, b = 3, title = "Post-incendio") # Visualizzare l'immagine a veri colori 
 dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 
-# Visualizzazione delle singole bande con dettaglio
+# Visualizzazione delle delle quattro bande separate per entrambe le immagini (RGB + NIR)
 # Viene specificata la banda, il colore e il titolo
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
 plot(pre[[1]], col = magma(100), main = "Pre - Red") 
@@ -48,7 +42,7 @@ plot(post[[1]], col = magma(100), main = "Post - Red")
 plot(post[[2]], col = magma(100), main = "Post - Green")
 plot(post[[3]], col = magma(100), main = "Post - Blue")
 plot(post[[4]], col = magma(100), main = "Post - NIR")
-dev.off() # Chiudere il pannello di visualizzazione delle immagini
+dev.off() # Chiudere il pannello di visualizzazione delle immagini dopo aver salvato le immagini in png.
 
 # Calcolo degli indici vegetazionali
 
