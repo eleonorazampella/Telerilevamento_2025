@@ -269,8 +269,7 @@ print(tabella)  # visualizzazione tabella
 ## Grafico comparativo 📉
 
 ````r
-df_long = melt(tabella, id.vars = "Classe",                                              # Converte la tabella in formato lungo per il                                                                                             grafico a barre
-                variable.name = "Periodo",
+df_long = melt(tabella, id.vars = "Classe",                                              # Converte la tabella in formato lungo                         variable.name = "Periodo",
                 value.name = "Percentuale")
 
 
@@ -418,8 +417,7 @@ print(tabella) # Per la visualizzazione della tabella
 ## Grafico comparativo con ggplot2 📉
 
 ````r
-df_long = melt(tabella, id.vars="Classe",                       # Converte la tabella in formato lungo per il                                                                                             grafico a barre
-                variable.name="Periodo",
+df_long = melt(tabella, id.vars="Classe",                       # Converte la tabella in formato lungo per ggplot                                       variable.name="Periodo",
                 value.name="Percentuale")
 
 ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +   # Crea Grafico assegnando X, Y e colore
