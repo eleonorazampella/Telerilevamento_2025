@@ -129,17 +129,17 @@ df_long = melt(tabella, id.vars = "Classe",
                 value.name = "Percentuale")
 
 
-ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
-  geom_bar(stat="identity", position="dodge") +
-  geom_text(aes(label=round(Percentuale,1)),
-            position=position_dodge(width=0.9),
-            vjust=-0.25, size=3) +
-  scale_fill_viridis_d() +
-  ylim(0,100) +
-  labs(title="Copertura vegetazione (NDVI > 0.3)",
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                               # Crea Grafico assegnando X, Y e colore
+  geom_bar(stat="identity", position="dodge") +                                             # Barre affiaancate per confrontare i periodi
+  geom_text(aes(label=round(Percentuale,1)),                                                # Aggiunge i valori sulle barre 
+            position=position_dodge(width=0.9),                                             # Allinea il testo sulle barre affiancate
+            vjust=-0.25, size=3) +                                                          # Sposta leggermente sopra le barre, dimensione testo
+  scale_fill_viridis_d() +                                                                  # Applica la palette di colori 'viridis'
+  ylim(0,100) +                                                                             # Limiti asse Y 0-100%
+  labs(title="Copertura vegetazione (NDVI > 0.3)",                                          # Titoli ed etichette
        subtitle="Percentuale di vegetazione e non vegetazione prima e dopo l'incendio",
        y="Percentuale (%)", x="Classe NDVI") +
-  theme_minimal()
+  theme_minimal()                                                                           # Tema pulito
 
 
 # Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
