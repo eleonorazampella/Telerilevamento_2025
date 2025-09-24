@@ -114,11 +114,15 @@ plot(post[[3]], col = magma(100), main = "Post - Blue")
 plot(post[[4]], col = magma(100), main = "Post - NIR")
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
-> Viene specificata la banda, il colore e il titolo
+ Viene specificata la banda, il colore e il titolo
 
 <p align="center">
   <img src="img/PrePost_Bande.png" width="1000"/>
 </p>
+
+> **COMMENTO**
+> Le bande **red**,**green** and **blue** sono quelle che l'occhio umano percepisce, la banda **NIR** è quella dell'infrarosso che la vegetazione sana riflette molto. Nella riga superiore osserviamo la situazione pre-evento e possiamo affermare che le bande **red**, **green** e **blue** mostrano un'area scura, suggerendo la presenza di vegetazione o di suolo con bassa riflettanza visibile,la banda **NIR** è molto più chiara e luminosa facendoci notare la presenza di vegetazione sana.
+> Nella riga inferiore osserviamo la situazione post-evento notando le bande **red**, **green** e **blue** più chiare e la banda **NIR** visibilmente più scura e questo indica un forte calo nella riflettanza infrarossa.
 
 # 4. Calcolo degli indici vegetazionali🌈
 
