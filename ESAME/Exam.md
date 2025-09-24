@@ -4,7 +4,7 @@
 
 # 1. Introduzione📑
 
-Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalemnte la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30.000 ettari di terreno.
+Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalmente la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30.000 ettari di terreno.
 La zona, caratterizzata da foreste di pino, quercia e sughera, rappresenta un ecosistema fragile e ad elevato rischio incendi a causa del clima mediterraneo e delle ondate di calore sempre più frequenti.
 In questo progetto analizziamo l’impatto dell’incendio sulla vegetazione attraverso immagini satellitari Sentinel-2 in tre momenti temporali:
 - Pre-incendio: 25-30 Maggio 2022
@@ -22,9 +22,9 @@ Gli indici vegetazionali calcolati sono:
 
  >  Area di studio(Sierra de la Culebra,Zamora,Spagna)
  
-# 2. Obbiettivo del progetto🎯
+# 2. Obiettivo del progetto🎯
 
-L'obbiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
+L'obiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
 
 # 3. Metodologia🛰️ 
 
@@ -40,7 +40,7 @@ Una volta ottenute le immagini satellitari le carichiamo su R impostando una wor
 ````r
 setwd("~/Desktop/TELERILEVAMENTO_R")
 ````
-Successivamente sono stati presi installati i seguenti pacchetti in R
+Successivamente sono stati installati i seguenti pacchetti in R
 
 ````r
 library(terra)      # Per lavorare con raster e immagini satellitari
@@ -137,7 +137,7 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/NBR.png" width="2000"/>
 </p>
 
- > **COMMETO**
+ > **COMMENTO**
  >
  > Prima dell'incendio si osservano valori più elevati coerenti con la vegetazione viva e rigogliosa;
  >  
