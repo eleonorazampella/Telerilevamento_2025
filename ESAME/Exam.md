@@ -236,6 +236,12 @@ dev.off()
   <img src="img/classiNDVI.png" width="900" height/>
 </p>
 
+> **COMMENTO**
+>
+> La prima immagine  mostra che la maggior parte dell'area era coperta da vegetazione (verde). Le zone rosse corrispondono principalmente a fiumi, specchi d'acqua o aree urbane preesistenti.
+>
+> La seconda immagine mostra che una vasta area al centro e a destra è passata dal verde al rosso. Questo indica che la vegetazione è stata rimossa o distrutta su larga scala.
+
 ## Calcolo frequenze percentuali 
 Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
 
@@ -289,7 +295,9 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
 <p align="center">
   <img src="img/Veg-noVeg.png" width="900" height/>
 </p>
->[!IMPORTANT]
+
+> [!IMPORTANT]
+> 
 
 # 6. Analisi a un anno dall’incendio (Agosto 2023)🌿
 Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
