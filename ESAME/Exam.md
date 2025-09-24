@@ -102,8 +102,9 @@ plot(post[[3]], col = magma(100), main = "Post - Blue")
 plot(post[[4]], col = magma(100), main = "Post - NIR")
 dev.off() # Chiudere il pannello di visualizzazione delle immagini
 ````
- Viene specificata la banda, il colore e il titolo
-
+> [!NOTE]
+> Viene specificata la banda, il colore e il titolo
+ 
 <p align="center">
   <img src="img/PrePost_Bande.png" width="1000"/>
 </p>
