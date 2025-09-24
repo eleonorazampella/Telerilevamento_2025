@@ -280,23 +280,25 @@ df_long = melt(tabella, id.vars = "Classe",
                 value.name = "Percentuale")
 
 
-ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
-  geom_bar(stat="identity", position="dodge") +
-  geom_text(aes(label=round(Percentuale,1)),
-            position=position_dodge(width=0.9),
-            vjust=-0.25, size=3) +
-  scale_fill_viridis_d() +
-  ylim(0,100) +
-  labs(title="Copertura vegetazione (NDVI > 0.3)",
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                            # Creazione grafico              
+   geom_bar(stat="identity", position="dodge") +                                         # Crea le barre del grafico
+  geom_text(aes(label=round(Percentuale,1)),                                             # Aggiunge etichette di testo  
+            position=position_dodge(width=0.9),                                          # Allinea il testo sopra le barre affiancate
+            vjust=-0.25, size=3) +                                                       # Sposta il testo leggermente sopra la parte superiore delle                                                                              barre.
+  scale_fill_viridis_d() +                                                               # Applica la palette di colori 'viridis'
+  ylim(0,100) +                                                                          # Imposta i limiti dell'asse Y da 0 a 100
+  labs(title="Copertura vegetazione (NDVI > 0.3)",                                       # Imposta i titoli e le etichette del grafico
        subtitle="Percentuale di vegetazione e non vegetazione prima e dopo l'incendio",
        y="Percentuale (%)", x="Classe NDVI") +
-  theme_minimal()
+  theme_minimal()                                                                        # Applica un tema pulito e minimale
 ````
 <p align="center">
   <img src="img/Veg-noVeg.png" width="900" height/>
 </p>
 
-> [!IMPORTANT]
+> [ !IMPORTANT ]
+> 
+>
 > 
 
 # 6. Analisi a un anno dall’incendio (Agosto 2023)🌿
