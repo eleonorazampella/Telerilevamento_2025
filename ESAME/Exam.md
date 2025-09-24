@@ -1,8 +1,8 @@
-# ANALISI PRE E POST INCENDIO DELLA VEGETAZIONE NELLA SIERRA DE LA CULEBRA(2022)🌱🔥
+# ANALISI PRE E POST INCENDIO DELLA VEGETAZIONE NELLA SIERRA DE LA CULEBRA(2022) 🌱🔥
 ### Esame di Telerilevamento Geo-Ecologico in R - 2025
 #### Eleonora Zampella
 
-# 1. Introduzione📑
+# 1. Introduzione 📑
 
 Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalmente la zona montuosa di Sierra de la Culebra in provincia di Zamora. L'estensione del rogo è stata molto ampia e ha distrutto più di 30.000 ettari di terreno.
 La zona, caratterizzata da foreste di pino, quercia e sughera, rappresenta un ecosistema fragile e ad elevato rischio incendi a causa del clima mediterraneo e delle ondate di calore sempre più frequenti.
@@ -22,7 +22,7 @@ Gli indici vegetazionali calcolati sono:
 
  >  Area di studio(Sierra de la Culebra,Zamora,Spagna)
  
-# 2. Obiettivo del progetto🎯
+# 2. Obiettivo del progetto 🎯
 
 L'obiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
 
@@ -34,7 +34,7 @@ Le immagini satellitari provengono da [**Google Earth Engine**](https://eartheng
 > [!NOTE]
 > Il codice JavaScript utilizzato è quello fornito durante il corso ed è disponibile nel file Codice.js
 
-## Importazione e visualizzazione delle immagini💻 
+## Importazione e visualizzazione delle immagini 💻 
 Una volta ottenute le immagini satellitari le carichiamo su R impostando una working directory:
 
 ````r
@@ -73,7 +73,7 @@ plot(post) # Per visulizzare la seconda immagine
 
 > Immagine dopo l'incendio nelle 5 bande
 
-## Visualizzazione delle immagini in RGB 
+## Visualizzazione delle immagini in RGB 🌈
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
@@ -87,7 +87,7 @@ dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 
 > Dalle immagini è visibile la differenza tra il prima e il dopo l'incendio 
 
-## Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)🎨
+## Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR) 🎨
 
 ````r
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
@@ -114,9 +114,9 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 > Le bande **red**,**green** and **blue** sono quelle che l'occhio umano percepisce, la banda **NIR** è quella dell'infrarosso che la vegetazione sana riflette molto. Nella riga superiore osserviamo la situazione pre-evento e possiamo affermare che le bande **red**, **green** e **blue** mostrano un'area scura, suggerendo la presenza di vegetazione o di suolo con bassa riflettanza visibile,la banda **NIR** è molto più chiara e luminosa facendoci notare la presenza di vegetazione sana.
 Nella riga inferiore osserviamo la situazione post-evento notando le bande **red**, **green** e **blue** più chiare e la banda **NIR** visibilmente più scura e questo indica un forte calo nella riflettanza infrarossa.
 
-# 4. Calcolo degli indici vegetazionali🌈
+# 4. Calcolo degli indici vegetazionali 📈
 
-## Indice NBR (Normalized Burn Ratio)
+## Indice NBR (Normalized Burn Ratio) 🔥
 L'indice sfrutta la banda NIR (B8) sensibile alla vegetazione sana e la banda SWIR2 (B12) sensibile all’umidità e alle superfici bruciate.
 Attraverso l'indice riesco a visualizzare le aree bruciate: valori più bassi indicano vegetazione compromessa. 
 
@@ -145,7 +145,7 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
  > 
  > La mappa differenziale mette in evidenza l’impatto del fuoco: valori positivi corrispondono a zone dove la vegetazione è stata compromessa, permettendo di localizzare e quantificare le aree più danneggiate.
 
-## Indice DVI (Difference Vegetation Index)
+## Indice DVI (Difference Vegetation Index) 🌿
 L’indice DVI (Difference Vegetation Index) è calcolato come differenza tra la riflettanza nel vicino infrarosso (NIR, banda B8) e quella nel rosso (RED, banda B4). Misura la quantità assoluta di vegetazione senza normalizzazione
 
 ````r
@@ -173,7 +173,7 @@ dev.off()
 >
 > **ΔDVI** L'immagine è quasi interamente viola scuro e arancione, a dimostrazione che il cambiamento è stato significativo su tutta l'area.e zone viola scuro rappresentano il maggiore impatto negativo, dove il valore del DVI è calato drasticamente. Questo indica le aree in cui la vegetazione è stata completamente distrutta o gravemente danneggiata.Le aree più chiare e arancioni indicano un cambiamento meno negativo, probabilmente zone meno colpite o con vegetazione che ha resistito meglio all'evento.
 
-## Indice NDVI (Normalized Difference Vegetation Index)
+## Indice NDVI (Normalized Difference Vegetation Index) 🍃
 - (NIR - RED) / (NIR + RED)
 - Misura la salute della vegetazione: valori vicini a 1 indicano vegetazione sana
 
@@ -204,7 +204,7 @@ L'area arancione mostra una perdita di NDVI meno severa, probabilmente zone meno
 
 # 5. Analisi Multitemporale⏳
 
-## Classificazione NDVI
+## Classificazione NDVI 🗂️
 
 ````r
 soglia = 0.3 # Soglia NDVI per distinguere vegetazione/non vegetazione
@@ -213,7 +213,7 @@ classi_post=classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=
 ````
 > Ho scelto la soglia NDVI = 0.3 per distinguere vegetazione e non-vegetazione, in quanto valori inferiori a 0.3 indicano generalmente suolo nudo o aree degradate, mentre valori superiori corrispondono a vegetazione attiva e sana.
 
-## Visualizzazione delle classi 
+## Visualizzazione delle classi 👁️
 
 ````r
 im.multiframe(1,2)
@@ -231,7 +231,7 @@ dev.off()
 >
 > La seconda immagine mostra che una vasta area al centro e a destra è passata dal verde al rosso. Questo indica che la vegetazione è stata rimossa o distrutta su larga scala.
 
-## Calcolo frequenze percentuali 
+## Calcolo frequenze percentuali 📊
 Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
 
 ````r
@@ -244,7 +244,7 @@ perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
 perc_post = freq_post$count * 100 / ncell(classi_post)
 ````
 
-## Creazione tabella riassuntiva
+## Creazione tabella riassuntiva 📝
 ````r
 NDVI_classi = c("Non vegetazione", "Vegetazione")
 tabella = data.frame(
@@ -261,7 +261,7 @@ print(tabella)  # visualizzazione tabella
 | Vegetazione    |      92.96 % |       53.59 % |
 
 
-## Grafico comparativo📉
+## Grafico comparativo 📉
 
 ````r
 df_long = melt(tabella, id.vars = "Classe",
@@ -285,7 +285,7 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                   
   <img src="img/Veg-noVeg.png" width="900" height/>
 </p>
 
-# 6. Analisi a un anno dall’incendio (Agosto 2023)🌿
+# 6. Analisi a un anno dall’incendio (Agosto 2023) 🌿🕒�
 Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
 E' stata cambiata la data aggiornandola a quella del 2023 (dal 5/08/2023 al 10/08/23)
 Sono stati eseguiti gli stessi passaggi usati in precedenza
@@ -301,7 +301,7 @@ plot(post2023) # Ho scaricato l'immagine
 
 > Immagine dopo un anno nelle 5 bande
 
-## Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
+## Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 📊
 ````r
 dvi_post2023 = post2023[["B8"]] - post2023[["B4"]]
 ndvi_post2023 = (post2023[["B8"]] - post2023[["B4"]]) / (post2023[["B8"]] + post2023[["B4"]])
@@ -320,13 +320,13 @@ dev.off()
 >
 > La seconda immagine ci mostra l'indice **NDVI** che presenta valori elevati  rispetto a quelli immediatamente dopo l'incendio. Le aree scure che si vedevano subito dopo l'evento (come mostrato nell'analisi precedente) sono ora più chiare, tendenti all'arancione e al giallo.Questo aumento dell'**NDVI** indica una ricrescita della vegetazione. La zona non è più completamente "morta", ma mostra i primi segni di vita vegetale.
 
-## Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.)
+## Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.) 🗺️
 ````r
 ndvi_post2023_aligned = resample(ndvi_post2023, ndvi_post, method="bilinear")
 dvi_post2023_aligned = resample(dvi_post2023, dvi_post, method="bilinear")
 ````
 
-## Calcolo differenze
+## Calcolo differenze 
 ````r
 ddvi_2022 = dvi_pre - dvi_post
 ddvi_2023 = dvi_post - dvi_post2023_aligned
@@ -334,8 +334,8 @@ dndvi_2022 = ndvi_pre - ndvi_post          # Pre vs post incendio 2022
 dndvi_2023 = ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
 ````
 
-## Visualizzazione affiancata
-## DVI
+## Visualizzazione affiancata 
+## DVI 🌿
 ````r
 im.multiframe(2,3)  # 2 righe x 3 colonne
 plot(dvi_pre, main="DVI Pre-incendio 2022", col=viridis(100))
@@ -355,7 +355,7 @@ dev.off()
 >
 > La **riga inferiore** mostra la differenza tra i vari periodi. Nell' **ΔDVI Pre vs Post 2022** le aree più scure (viola-nero) indicano la massima distruzione della vegetazione. Nell'**ΔDVI Post 2022 vs 2023** i colori arancioni e gialli rappresentano un aumento del valore DVI, indicando una positiva, seppur parziale, ripresa della vegetazione.
 
-## NDVI
+## NDVI 🍃
 ````r
 im.multiframe(2,3)  # 2 righe x 3 colonne
 plot(ndvi_pre, main="NDVI Pre-incendio 2022", col=viridis(100))
@@ -374,7 +374,7 @@ plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
 >
 > La **riga inferiore** ci mostra la differenza tra le mappe per quantificare il cambiamento avvenuto. Osserviamo all'inizio aree nere e viola scuro indicano la distruzione massima della vegetazione causata dall'incendio, successivamente i colori arancioni e gialli indicano un aumento dell'NDVI, a testimonianza di una ripresa positiva dell'ecosistema.
 
-## Analisi classificazione NDVI 
+## Analisi classificazione NDVI 🗂️
 ````r
 soglia = 0.3
 classi_pre = classify(ndvi_pre,  rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
@@ -382,7 +382,7 @@ classi_post = classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), nco
 classi_post2023 = classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=3, byrow=TRUE))
 ````
 
-## Frequenze percentuali
+## Frequenze percentuali 📊
 ````r
 freq_pre = freq(classi_pre)  # Utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
 freq_post = freq(classi_post)
@@ -393,7 +393,7 @@ perc_post = freq_post$count * 100 / ncell(classi_post)
 perc_post2023 = freq_post2023$count * 100 / ncell(classi_post2023)
 ````
 
-## Percentuale di copertura vegetale e non vegetale nelle diverse date considerate: pre-incendio (maggio 2022), post-incendio (agosto 2022) e un anno dopo (agosto 2023)
+## Percentuale di copertura vegetale e non vegetale nelle diverse date considerate: pre-incendio (maggio 2022), post-incendio (agosto 2022) e un anno dopo (agosto 2023) 📉
 
 ````r
 tabella = data.frame(
@@ -410,7 +410,7 @@ print(tabella) # Per la visualizzazione della tabella
 | Vegetazione    |      92.96 % |       53.59 % |   68.85 % |
 
 
-## Grafico comparativo con ggplot2📉
+## Grafico comparativo con ggplot2 📉
 
 ````r
 df_long = melt(tabella, id.vars="Classe",
@@ -433,7 +433,7 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
   <img src="img/2grafico2023.png" width="900" height/>
 </p>
 
-# 7. Conclusioni📝
+# 7. Conclusioni 📝
 In conclusione possiamo affermare che l'incendio del 2022 ha ridotto significativamente la vegetazione nella Sierra de la Culebra. Nel 2023 si osserva un leggero recupero, ma alcune aree restano degradate. L’analisi multitemporale e gli indici NDVI, DVI e NBR evidenziano chiaramente l’impatto e le zone più colpite.
 
-# Grazie per l'attenzione!😃 
+# Grazie per l'attenzione! 😃 
