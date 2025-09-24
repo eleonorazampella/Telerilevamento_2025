@@ -101,8 +101,8 @@ dev.off()
 
 # Calcolo frequenze percentuali 
 # Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
-freq_pre = freq(classi_pre, useNA="no")   # conta i pixel per ogni classe NDVI pre, utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
-freq_post = freq(classi_post,useNA="no")  # conta i pixel per ogni classe NDVI post, utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
+freq_pre = freq(classi_pre)   # conta i pixel per ogni classe NDVI pre 
+freq_post = freq(classi_post)  # conta i pixel per ogni classe NDVI post
 
 perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
 perc_post = freq_post$count * 100 / ncell(classi_post)
