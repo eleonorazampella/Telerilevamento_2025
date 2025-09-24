@@ -124,7 +124,7 @@ print(tabella)  # visualizzazione tabella
 
 # Grafico comparativo
 
-df_long = melt(tabella, id.vars = "Classe",
+df_long = melt(tabella, id.vars = "Classe",                                                 # Converte la tabella in formato lungo per il grafico
                 variable.name = "Periodo",
                 value.name = "Percentuale")
 
@@ -218,7 +218,7 @@ print(tabella) # Per la visualizzazione della tabella
 
 # Grafico comparativo con ggplot2
 
-df_long = melt(tabella, id.vars="Classe",
+df_long = melt(tabella, id.vars="Classe",                       # Converte la tabella in formato lungo per il grafico
                 variable.name="Periodo",
                 value.name="Percentuale")
 
