@@ -121,7 +121,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 </p>
 
 > **COMMENTO**
-
+>
 > Le bande **red**,**green** and **blue** sono quelle che l'occhio umano percepisce, la banda **NIR** è quella dell'infrarosso che la vegetazione sana riflette molto. Nella riga superiore osserviamo la situazione pre-evento e possiamo affermare che le bande **red**, **green** e **blue** mostrano un'area scura, suggerendo la presenza di vegetazione o di suolo con bassa riflettanza visibile,la banda **NIR** è molto più chiara e luminosa facendoci notare la presenza di vegetazione sana.
 Nella riga inferiore osserviamo la situazione post-evento notando le bande **red**, **green** e **blue** più chiare e la banda **NIR** visibilmente più scura e questo indica un forte calo nella riflettanza infrarossa.
 
@@ -149,9 +149,11 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
 </p>
 
  > **COMMETO**
-
- > Prima dell'incendio si osservano valori più elevati coerenti con la vegetazione viva e rigogliosa; 
+ >
+ > Prima dell'incendio si osservano valori più elevati coerenti con la vegetazione viva e rigogliosa;
+ >  
  > Dopo l'incendio i valori si riducono nelle aree bruciate, evidenziando la perdita di vegetazione;
+ > 
  > La mappa differenziale mette in evidenza l’impatto del fuoco: valori positivi corrispondono a zone dove la vegetazione è stata compromessa, permettendo di localizzare e quantificare le aree più danneggiate.
 
 ## Indice DVI (Difference Vegetation Index)
@@ -174,6 +176,14 @@ dev.off()
   <img src="img/DVI.png" width="2000"/>
 </p>
 
+> **COMMENTO**
+>
+> **DVI Pre** la scala di colori va dal viola scuro (valori negativi, bassa riflettanza NIR rispetto al Red) al giallo brillante (valori positivi elevati, alta riflettanza NIR).Le aree prevalentemente verdi e gialle indicano una vegetazione abbondante e in salute, poiché il DVI è alto. Si può notare una distribuzione di vegetazione in tutta l'area, con le zone più dense e rigogliose rappresentate dal verde-giallo.
+>
+> **DVI Post** le aree che prima erano verdi e gialle ora sono diventate viola e blu scuro, questo significa che il valore del DVI è crollato drasticamente. C'è stata una perdita significativa di vegetazione, probabilmente a causa di un incendio, un'alluvione o un altro evento catastrofico che ha rimosso o danneggiato le piante. La mancanza di vegetazione fa sì che la riflettanza nel NIR diminuisca e il DVI scenda a valori molto bassi o negativi.
+>
+> **ΔDVI** L'immagine è quasi interamente viola scuro e arancione, a dimostrazione che il cambiamento è stato significativo su tutta l'area.e zone viola scuro rappresentano il maggiore impatto negativo, dove il valore del DVI è calato drasticamente. Questo indica le aree in cui la vegetazione è stata completamente distrutta o gravemente danneggiata.Le aree più chiare e arancioni indicano un cambiamento meno negativo, probabilmente zone meno colpite o con vegetazione che ha resistito meglio all'evento.
+
 ## Indice NDVI (Normalized Difference Vegetation Index)
 - (NIR - RED) / (NIR + RED)
 - Misura la salute della vegetazione: valori vicini a 1 indicano vegetazione sana
@@ -193,6 +203,10 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 <p align="center">
   <img src="img/NDVI.png" width="2000"/>
 </p>
+
+> **COMMENTO**
+>
+> 
 
 # 5. Analisi Multitemporale⏳
 
