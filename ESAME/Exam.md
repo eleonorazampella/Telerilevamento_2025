@@ -418,8 +418,10 @@ print(tabella) # Per la visualizzazione della tabella
 ## Grafico comparativo con ggplot2 📉
 
 ````r
-df_long = melt(tabella, id.vars="Classe",                       # Converte la tabella in formato lungo per ggplot                                       variable.name="Periodo",
-                value.name="Percentuale")
+df_long = melt(tabella, id.vars = "Classe",                     # Converte la tabella in formato lungo 
+                variable.name = "Periodo",
+                value.name = "Percentuale")
+
 
 ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +   # Crea Grafico assegnando X, Y e colore
   geom_bar(stat="identity", position="dodge") +                 # Barre affiaancate per confrontare i periodi
