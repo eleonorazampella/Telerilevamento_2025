@@ -296,11 +296,6 @@ ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                   
   <img src="img/Veg-noVeg.png" width="900" height/>
 </p>
 
-> [ !IMPORTANT ]
-> 
->
-> 
-
 # 6. Analisi a un anno dall’incendio (Agosto 2023)🌿
 Per osservare lo stato della vegetazione un anno dopo è stata scaricata un'immagine satellitare attraverso il codice JavaScript utilizzato in precedenza su GEE
 E' stata cambiata la data aggiornandola a quella del 2023 (dal 5/08/2023 al 10/08/23)
@@ -314,6 +309,8 @@ plot(post2023) # Ho scaricato l'immagine
 <p align="center">
   <img src="img/Post2023.png" width="1000"/>
 </p>
+
+> Immagine dopo un anno nelle 5 bande
 
 ## Calcolo gli indici (DVI e NDVI) anche per l'anno 2023 
 ````r
