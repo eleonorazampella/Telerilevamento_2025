@@ -4,7 +4,7 @@
 
 # 1. Introduzione📑
 
-Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalmente la zona montuosa di Sierra de la culebra in provincia di Zamora. L'estensione del rogo è stato uno dei peggiori e ha distrutto più di 30.000 ettari di terreno.
+Nell'estate del 2022 la Spagna è stata colpita da un enorme incendio che colpì principalmente la zona montuosa di Sierra de la Culebra in provincia di Zamora. L'estensione del rogo è stata molto ampia e ha distrutto più di 30.000 ettari di terreno.
 La zona, caratterizzata da foreste di pino, quercia e sughera, rappresenta un ecosistema fragile e ad elevato rischio incendi a causa del clima mediterraneo e delle ondate di calore sempre più frequenti.
 In questo progetto analizziamo l’impatto dell’incendio sulla vegetazione attraverso immagini satellitari Sentinel-2 in tre momenti temporali:
 - Pre-incendio: 25-30 Maggio 2022
@@ -53,8 +53,8 @@ library(reshape2)   # Riorganizzazioni dei dati tabellari
 A questo punto impostiamo i raster Sentinel-2 : 
 
 ````r
-pre=rast("PreIncendio_Maggio2022.tif") # Importazione della prima immagine e la nominazione
-plot(pre) # Per visulaizzare l'immagine importata
+pre=rast("PreIncendio_Maggio2022.tif") # Ho importato la prima immagine e l’ho nominata
+plot(pre) # Per visualizzare l'immagine importata
 ````
 
 <p align="center">
@@ -64,7 +64,7 @@ plot(pre) # Per visulaizzare l'immagine importata
 > Immagine prima dell'incendio nelle 5 bande
 
 ````r
-post=rast("PostIncendio_Agosto2022.tif") #Importazione della seconda immagine e la nominazione 
+post=rast("PostIncendio_Agosto2022.tif") # Ho importato la seconda immagine e l'ho nominata
 plot(post) # Per visulizzare la seconda immagine
 ````
 <p align="center">
@@ -180,7 +180,7 @@ dev.off()
 ````r
 ndvi_pre = (pre[["B8"]] - pre[["B4"]]) / (pre[["B8"]] + pre[["B4"]]) # Calcolo NDVI pre-incendio 
 ndvi_post = (post[["B8"]] - post[["B4"]]) / (post[["B8"]] + post[["B4"]]) # Calcolo NDVI post-incendio 
-dndvi = ndvi_pre - ndvi_post #differeza NDVI
+dndvi = ndvi_pre - ndvi_post #differenza NDVI
 ````
 ````r
 im.multiframe(1,3)  #  Visualizzazione di un pannello grafico con 1 righa e 3 colonne
