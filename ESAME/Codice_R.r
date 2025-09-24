@@ -222,18 +222,18 @@ df_long = melt(tabella, id.vars="Classe",
                 variable.name="Periodo",
                 value.name="Percentuale")
 
-ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
-  geom_bar(stat="identity", position="dodge") +            # barre affiaancate 
-  geom_text(aes(label=round(Percentuale,1)),               # aggiunge i numeri
-            position=position_dodge(width=0.9),            # allinea il testo sulle barre affiancate
-            vjust=-0.25,                                   # sposta leggermente sopra le barre
-            size=3) +                                      # dimensione testo
-  scale_fill_manual(values = c("Pre_incendio" = "darkorchid4",
+                                
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +   # Crea Grafico assegnando X, Y e colore
+  geom_bar(stat="identity", position="dodge") +                 # Barre affiaancate per confrontare i periodi
+  geom_text(aes(label=round(Percentuale,1)),                    # Aggiunge i valori sulle barre
+            position=position_dodge(width=0.9),                 # Allinea il testo sulle barre affiancate
+            vjust=-0.25,                                        # Sposta leggermente sopra le barre
+            size=3) +                                           # Dimensione testo
+  scale_fill_manual(values = c("Pre_incendio" = "darkorchid4",  # Colori distinti per i periodi
                                "Post_incendio" = "yellow",
-                               "Post_2023" = "orange")) +                                 # palette viridis
-  ylim(0,100) +                                            # asse y da 0 a 100
-  labs(title="Copertura vegetazione (NDVI > 0.3)",         # titoli
+                               "Post_2023" = "orange"))                                       
+  ylim(0,100) +                                                 # Limiti asse Y 0-100%
+  labs(title="Copertura vegetazione (NDVI > 0.3)",              # Titoli ed etichette
        y="Percentuale (%)", x="Classe NDVI") +
-  theme_minimal()                                          # tema pulito
-
+  theme_minimal()                                               # Tema pulito
 
