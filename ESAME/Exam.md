@@ -116,7 +116,6 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 # 4. Calcolo degli indici vegetazionali 📈
 
 ## Indice NBR (Normalized Burn Ratio) 🔥
-- Formula:
 $$
 NBR = \frac{NIR - SWIR2}{NIR + SWIR2}
 $$
@@ -150,7 +149,6 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
  > La mappa differenziale mette in evidenza l’impatto del fuoco: valori positivi corrispondono a zone dove la vegetazione è stata compromessa, permettendo di localizzare e quantificare le aree più danneggiate.
 
 ## Indice DVI (Difference Vegetation Index) 🌿
-- Formula:
 $$
 DVI = NIR - RED
 $$
@@ -184,11 +182,9 @@ dev.off()
 > Nell'**ΔDVI** osserviamo le zone colorate di viola scuro mostrano il massimo danno alla vegetazione, mentre le aree arancioni chiare indicano cambiamenti meno significativi. L’immagine mette in evidenza chiaramente le aree più colpite dall’incendio e quelle dove la vegetazione è stata meno danneggiata.
 
 ## Indice NDVI (Normalized Difference Vegetation Index) 🍃
-- Formula: 
 $$
 NDVI = \frac{NIR - RED}{NIR + RED}
 $$
-
 - Indica la **salute della vegetazione**.
 - Valori vicini a 1: vegetazione sana e rigogliosa.
 - Valori vicini a 0 o negativi: suolo nudo, acqua o aree degradate.
