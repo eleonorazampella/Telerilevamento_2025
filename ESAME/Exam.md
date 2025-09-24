@@ -206,7 +206,12 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 
 > **COMMENTO**
 >
-> 
+> **NDVI Pre** La scala di valori va da -1.0 a 1.0. Valori alti (vicini a 1.0) indicano una vegetazione densa e sana, mentre valori bassi o negativi indicano acqua, roccia, neve o suolo nudo. Le aree prevalentemente verdi e gialle mostrano che la vegetazione era abbondante. La distribuzione di questi colori suggerisce una copertura vegetale diffusa su gran parte del territorio. Si nota anche la presenza di un fiume o corso d'acqua che scorre, rappresentato da valori bassi (neri/blu) a causa della riflettanza dell'acqua.
+>
+> **NDVI Post**  le zone che prima erano verde scuro e giallo ora sono diventate verdi più chiari o bluastri. Questo indica un calo significativo del valore dell'NDVI in tutta l'area.L'abbassamento dei valori dell'NDVI riflette la perdita o il grave danneggiamento della vegetazione, probabilmente a causa di un incendio boschivo o di un altro disastro naturale che ha rimosso la copertura vegetale. L'area colpita appare meno verde e più "spenta".
+>
+> **ΔNDVI** La scala di valori va da -1.0 a 0.5. I valori negativi indicano una diminuzione dell'NDVI, cioè una perdita di vegetazione.L'intera immagine è dominata da colori arancioni e violacei scuri. Le aree viola scuro e nere indicano il massimo impatto negativo, dove il NDVI è crollato in maniera più significativa. Questo corrisponde alla distruzione più estesa della vegetazione.
+L'area arancione mostra una perdita di NDVI meno severa, probabilmente zone meno colpite o con vegetazione che è riuscita a resistere meglio.
 
 # 5. Analisi Multitemporale⏳
 
