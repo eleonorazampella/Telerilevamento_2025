@@ -239,7 +239,6 @@ dev.off()
 > La seconda immagine mostra che una vasta area al centro e a destra è passata dal verde al rosso. Questo indica che la vegetazione è stata rimossa o distrutta su larga scala.
 
 ## Calcolo frequenze percentuali 📊
-Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
 
 ````r
 freq_pre = freq(classi_pre)   # conta i pixel per ogni classe NDVI pre
@@ -247,9 +246,10 @@ freq_post = freq(classi_post)  # conta i pixel per ogni classe NDVI post
 ````
 
 ````r
-perc_pre = freq_pre$count  * 100 / ncell(classi_pre)
-perc_post = freq_post$count * 100 / ncell(classi_post)
+perc_pre = freq_pre$count  * 100 / ncell(classi_pre)               # Calcola la percentuale di pixel per ogni classe sul totale (pre)
+perc_post = freq_post$count * 100 / ncell(classi_post)             # Calcola la percentuale di pixel per ogni classe sul totale (post)
 ````
+> Per quantificare quanto terreno è coperto da vegetazione e non-vegetazione
 
 ## Creazione tabella riassuntiva 📝
 ````r
