@@ -325,6 +325,11 @@ dev.off()
   <img src="img/DVI_NDVI2023.png" width="900"/>
 </p>
 
+> **COMMENTO**
+>
+> La prima immagine ci mostra l'indice **DVI** che presenta valori bassi suggerendo che la biomassa vegetale non si è ancora completamente ripresa. Anche se ci potrebbe essere stata una ricrescita iniziale (spesso di erbe o arbusti), la copertura vegetale complessiva è ancora molto inferiore rispetto a una foresta matura.
+>
+> La seconda immagine ci mostra l'indice **NDVI** che presenta valori elevati  rispetto a quelli immediatamente dopo l'incendio. Le aree scure che si vedevano subito dopo l'evento (come mostrato nell'analisi precedente) sono ora più chiare, tendenti all'arancione e al giallo.Questo aumento dell'**NDVI** indica una ricrescita della vegetazione. La zona non è più completamente "morta", ma mostra i primi segni di vita vegetale.
 
 ## Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.)
 ````r
@@ -355,6 +360,12 @@ dev.off()
   <img src="img/DVIprepost2023.png" width="1000"/>
 </p>
 
+> **COMMENTO**
+>
+> La **riga superiore** mostra un crollo del verde nel DVI Post-incendio 2022, seguito da una leggera ricrescita nel 2023, pur senza raggiungere i livelli pre-evento.
+>
+> La **riga inferiore** mostra la differenza tra i vari periodi. Nell' **ΔDVI Pre vs Post 2022** le aree più scure (viola-nero) indicano la massima distruzione della vegetazione. Nell'**ΔDVI Post 2022 vs 2023** i colori arancioni e gialli rappresentano un aumento del valore DVI, indicando una positiva, seppur parziale, ripresa della vegetazione.
+
 ## NDVI
 ````r
 im.multiframe(2,3)  # 2 righe x 3 colonne
@@ -367,6 +378,12 @@ plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
  <p align="center">
   <img src="img/NDVIprepost2023.png" width="1000"/>
 </p>
+
+> **COMMENTO**
+>
+> La **riga superiore** ci mostra come dalla vegetazione sana inziale(colore giallo e verde) ci sia stata una perdita significatica di biomassa con l'incendio fino ad arrivare ad una ricrescita della vegetazione ad un anno dall'incendio (colori sono più gialli e verdi)
+>
+> La **riga inferiore** ci mostra la differenza tra le mappe per quantificare il cambiamento avvenuto. Osserviamo all'inizio aree nere e viola scuro indicano la distruzione massima della vegetazione causata dall'incendio, successivamente i colori arancioni e gialli indicano un aumento dell'NDVI, a testimonianza di una ripresa positiva dell'ecosistema.
 
 ## Analisi classificazione NDVI 
 ````r
