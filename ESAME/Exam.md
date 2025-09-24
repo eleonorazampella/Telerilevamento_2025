@@ -73,18 +73,7 @@ plot(post) # Per visulizzare la seconda immagine
 
 > Immagine dopo l'incendio nelle 5 bande
 
-## Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)🎨
-
-### Confronto tra immagini pre e post incendio🔥
-
-````r
-im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
-plot(pre, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100)) 
-plot(post, main=c("B4-Red", "B3-Green", "B2-Blue", "B8-NIR"), col=magma(100))
-dev.off() # Chiudo il pannello grafico dopo aver salvato l'immagine in .png
-````
-
-### Visualizzazione delle immagini in RGB 
+## Visualizzazione delle immagini in RGB 
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
@@ -98,7 +87,7 @@ dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 
 > Dalle immagini è visibile la differenza tra il prima e il dopo l'incendio 
 
-### Visualizzazione delle singole bande con dettaglio
+## Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR)🎨
 
 ````r
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
