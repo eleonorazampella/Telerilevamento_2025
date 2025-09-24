@@ -73,7 +73,7 @@ plot(post) # Per visulizzare la seconda immagine
 
 > Immagine dopo l'incendio nelle 5 bande
 
-## Visualizzazione delle immagini in RGB 🌈
+### Visualizzazione delle immagini in RGB 🌈
 
 ````r
 im.multiframe(1,2) # Visualizzare un pannello grafico con 1 riga e 2 colonne 
@@ -87,7 +87,7 @@ dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 
 > Dalle immagini è visibile la differenza tra il prima e il dopo l'incendio 
 
-## Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR) 🎨
+### Visualizzazione delle quattro bande separate per entrambe le immagini (RGB + NIR) 🎨
 
 ````r
 im.multiframe(2,4) # Visualizzare un pannello grafico con 2 righe e 4 colonne
@@ -338,8 +338,7 @@ ddvi_2023 = dvi_post - dvi_post2023_aligned
 dndvi_2022 = ndvi_pre - ndvi_post          # Pre vs post incendio 2022
 dndvi_2023 = ndvi_post - ndvi_post2023_aligned  # Post 2022 vs post 2023
 ````
-
-## Visualizzazione affiancata 
+ 
 ## DVI 🌿
 ````r
 im.multiframe(2,3)  # 2 righe x 3 colonne
@@ -389,7 +388,7 @@ classi_post2023 = classify(ndvi_post2023_aligned, rcl=matrix(c(-Inf,soglia,0, so
 
 ## Frequenze percentuali 📊
 ````r
-freq_pre = freq(classi_pre)  # Utilizzo il useNA perchè non voglio contare i pixel che hanno valore mancante NA (mi interessano solo classi 0 senza vegetaioni e 1 con vegetazione)
+freq_pre = freq(classi_pre)  
 freq_post = freq(classi_post)
 freq_post2023 = freq(classi_post2023)
 
