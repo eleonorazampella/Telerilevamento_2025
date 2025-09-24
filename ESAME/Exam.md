@@ -9,7 +9,7 @@ La zona, caratterizzata da foreste di pino, quercia e sughera, rappresenta un ec
 In questo progetto analizziamo l’impatto dell’incendio sulla vegetazione attraverso immagini satellitari Sentinel-2 in tre momenti temporali:
 - Pre-incendio: 25-30 Maggio 2022
 - Post-incendio: 5-10 Agosto 2022
-- Un anno dopo: Agosto 2023
+- Un anno dopo: 5-10 Agosto 2023
   
 Gli indici vegetazionali calcolati sono:
 - NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
