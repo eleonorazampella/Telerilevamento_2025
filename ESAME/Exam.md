@@ -260,10 +260,13 @@ tabella = data.frame(
 
 print(tabella)  # visualizzazione tabella
 ````
- | Classe         | Pre_incendio | Post_incendio |
-|----------------|-------------:|--------------:|
-| Non vegetazione|       7.00 % |       46.36 % |
-| Vegetazione    |      92.96 % |       53.59 % |
+
+|   **Classe**   | **Pre_incendio** | **Post_incendio** |
+|----------------|-----------------:|------------------:|
+| Non vegetazione|       7.00 %     |       46.36 %     |
+| Vegetazione    |      92.96 %     |       53.59 %     |
+
+
 
 
 ## Grafico comparativo 📉
@@ -408,10 +411,11 @@ tabella = data.frame(
 )  
 print(tabella) # Per la visualizzazione della tabella
 ````
-| Classe         | Pre_incendio | Post_incendio | Post_2023 |
-|----------------|-------------:|--------------:|----------:|
-| Non vegetazione|       7.00 % |       46.36 % |   31.10 % |
-| Vegetazione    |      92.96 % |       53.59 % |   68.85 % |
+|   **Classe**   |**Pre_incendio** | **Post_incendio** | **Post_2023** |
+|----------------|----------------:|------------------:|--------------:|
+| Non vegetazione|       7.00 %    |       46.36 %     |   31.10 %     |
+| Vegetazione    |      92.96 %    |       53.59 %     |   68.85 %     |
+
 
 
 ## Grafico comparativo con ggplot2 📉
