@@ -121,8 +121,9 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 </p>
 
 > **COMMENTO**
+
 > Le bande **red**,**green** and **blue** sono quelle che l'occhio umano percepisce, la banda **NIR** è quella dell'infrarosso che la vegetazione sana riflette molto. Nella riga superiore osserviamo la situazione pre-evento e possiamo affermare che le bande **red**, **green** e **blue** mostrano un'area scura, suggerendo la presenza di vegetazione o di suolo con bassa riflettanza visibile,la banda **NIR** è molto più chiara e luminosa facendoci notare la presenza di vegetazione sana.
-> Nella riga inferiore osserviamo la situazione post-evento notando le bande **red**, **green** e **blue** più chiare e la banda **NIR** visibilmente più scura e questo indica un forte calo nella riflettanza infrarossa.
+Nella riga inferiore osserviamo la situazione post-evento notando le bande **red**, **green** e **blue** più chiare e la banda **NIR** visibilmente più scura e questo indica un forte calo nella riflettanza infrarossa.
 
 # 4. Calcolo degli indici vegetazionali🌈
 
@@ -147,7 +148,7 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
   <img src="img/NBR.png" width="2000"/>
 </p>
 
- > **Commento**
+ > **COMMETO**
 
  > Prima dell'incendio si osservano valori più elevati coerenti con la vegetazione viva e rigogliosa; 
  > Dopo l'incendio i valori si riducono nelle aree bruciate, evidenziando la perdita di vegetazione;
