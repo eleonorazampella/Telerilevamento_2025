@@ -117,8 +117,10 @@ Nella riga inferiore osserviamo la situazione post-evento notando le bande **red
 # 4. Calcolo degli indici vegetazionali 📈
 
 ## Indice NBR (Normalized Burn Ratio) 🔥
-L'indice sfrutta la banda NIR (B8) sensibile alla vegetazione sana e la banda SWIR2 (B12) sensibile all’umidità e alle superfici bruciate.
-Attraverso l'indice riesco a visualizzare le aree bruciate: valori più bassi indicano vegetazione compromessa. 
+- Formula: (NIR - SWIR2) / (NIR + SWIR2)
+- L'indice sfrutta la banda NIR (B8) sensibile alla vegetazione sana e la banda SWIR2 (B12) sensibile all’umidità e alle superfici bruciate.
+- Evidenzia le **aree bruciate o danneggiate da incendi**.
+- Valori bassi indicano vegetazione compromessa o terreno bruciato. 
 
 ````r
 nbr_pre = (pre[["B8"]] - pre[["B12"]]) / (pre[["B8"]] + pre[["B12"]]) # Calcolo NBR pre-incendio
@@ -146,7 +148,10 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
  > La mappa differenziale mette in evidenza l’impatto del fuoco: valori positivi corrispondono a zone dove la vegetazione è stata compromessa, permettendo di localizzare e quantificare le aree più danneggiate.
 
 ## Indice DVI (Difference Vegetation Index) 🌿
-L’indice DVI (Difference Vegetation Index) è calcolato come differenza tra la riflettanza nel vicino infrarosso (NIR, banda B8) e quella nel rosso (RED, banda B4). Misura la quantità assoluta di vegetazione senza normalizzazione
+- L’indice DVI (Difference Vegetation Index) è calcolato come differenza tra la riflettanza nel vicino infrarosso (NIR, banda B8) e quella nel rosso (RED, banda B4).
+- Formula: NIR - RED
+- Misura la **quantità assoluta di vegetazione** senza normalizzazione.
+- Valori elevati indicano presenza abbondante di vegetazione.
 
 ````r
 dvi_pre = pre[["B8"]] - pre[["B4"]] # Calcolo DVI pre-incendio
@@ -174,8 +179,10 @@ dev.off()
 > **ΔDVI** L'immagine è quasi interamente viola scuro e arancione, a dimostrazione che il cambiamento è stato significativo su tutta l'area.e zone viola scuro rappresentano il maggiore impatto negativo, dove il valore del DVI è calato drasticamente. Questo indica le aree in cui la vegetazione è stata completamente distrutta o gravemente danneggiata.Le aree più chiare e arancioni indicano un cambiamento meno negativo, probabilmente zone meno colpite o con vegetazione che ha resistito meglio all'evento.
 
 ## Indice NDVI (Normalized Difference Vegetation Index) 🍃
-- (NIR - RED) / (NIR + RED)
-- Misura la salute della vegetazione: valori vicini a 1 indicano vegetazione sana
+- Formula: (NIR - RED) / (NIR + RED)
+- Indica la **salute della vegetazione**.
+- Valori vicini a 1: vegetazione sana e rigogliosa.
+- Valori vicini a 0 o negativi: suolo nudo, acqua o aree degradate.
 
 ````r
 ndvi_pre = (pre[["B8"]] - pre[["B4"]]) / (pre[["B8"]] + pre[["B4"]]) # Calcolo NDVI pre-incendio 
