@@ -111,8 +111,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 
 > **COMMENTO**
 >
-> Le bande **red**,**green** and **blue** sono quelle che l'occhio umano percepisce, la banda **NIR** è quella dell'infrarosso che la vegetazione sana riflette molto. Nella riga superiore osserviamo la situazione pre-evento e possiamo affermare che le bande **red**, **green** e **blue** mostrano un'area scura, suggerendo la presenza di vegetazione o di suolo con bassa riflettanza visibile,la banda **NIR** è molto più chiara e luminosa facendoci notare la presenza di vegetazione sana.
-Nella riga inferiore osserviamo la situazione post-evento notando le bande **red**, **green** e **blue** più chiare e la banda **NIR** visibilmente più scura e questo indica un forte calo nella riflettanza infrarossa.
+> Le bande **RGB** (red,green,blue) mostrano la vegetazione visibile, mentre la banda **NIR** (Near Infrared / Infrarosso vicino, B8) evidenzia la vegetazione sana. Pre-incendio la **NIR** è chiara (vegetazione rigogliosa), post-incendio diventa scura, indicando un calo significativo della vegetazione.
 
 # 4. Calcolo degli indici vegetazionali 📈
 
@@ -172,11 +171,11 @@ dev.off()
 
 > **COMMENTO**
 >
-> **DVI Pre** la scala di colori va dal viola scuro (valori negativi, bassa riflettanza NIR rispetto al Red) al giallo brillante (valori positivi elevati, alta riflettanza NIR).Le aree prevalentemente verdi e gialle indicano una vegetazione abbondante e in salute, poiché il DVI è alto. Si può notare una distribuzione di vegetazione in tutta l'area, con le zone più dense e rigogliose rappresentate dal verde-giallo.
+> Nell' **DVI Pre** la scala va dal viola scuro (bassa riflettanza NIR) al giallo brillante (alta riflettanza NIR). Le zone verdi-gialle indicano vegetazione abbondante e sana.
 >
-> **DVI Post** le aree che prima erano verdi e gialle ora sono diventate viola e blu scuro, questo significa che il valore del DVI è crollato drasticamente. C'è stata una perdita significativa di vegetazione, probabilmente a causa di un incendio, un'alluvione o un altro evento catastrofico che ha rimosso o danneggiato le piante. La mancanza di vegetazione fa sì che la riflettanza nel NIR diminuisca e il DVI scenda a valori molto bassi o negativi.
+> Nell' **DVI Post** le aree verdi-gialle diventano viola-blu scuro, indicando una drastica perdita di vegetazione a causa dell’incendio.
 >
-> **ΔDVI** L'immagine è quasi interamente viola scuro e arancione, a dimostrazione che il cambiamento è stato significativo su tutta l'area.e zone viola scuro rappresentano il maggiore impatto negativo, dove il valore del DVI è calato drasticamente. Questo indica le aree in cui la vegetazione è stata completamente distrutta o gravemente danneggiata.Le aree più chiare e arancioni indicano un cambiamento meno negativo, probabilmente zone meno colpite o con vegetazione che ha resistito meglio all'evento.
+> Nell'**ΔDVI** osserviamo le zone colorate di viola scuro mostrano il massimo danno alla vegetazione, mentre le aree arancioni chiare indicano cambiamenti meno significativi. L’immagine mette in evidenza chiaramente le aree più colpite dall’incendio e quelle dove la vegetazione è stata meno danneggiata.
 
 ## Indice NDVI (Normalized Difference Vegetation Index) 🍃
 - Formula: (NIR - RED) / (NIR + RED)
@@ -202,12 +201,11 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 
 > **COMMENTO**
 >
-> **NDVI Pre** La scala di valori va da -1.0 a 1.0. Valori alti (vicini a 1.0) indicano una vegetazione densa e sana, mentre valori bassi o negativi indicano acqua, roccia, neve o suolo nudo. Le aree prevalentemente verdi e gialle mostrano che la vegetazione era abbondante. La distribuzione di questi colori suggerisce una copertura vegetale diffusa su gran parte del territorio. Si nota anche la presenza di un fiume o corso d'acqua che scorre, rappresentato da valori bassi (neri/blu) a causa della riflettanza dell'acqua.
+> Nell' **NDVI Pre** i valori alti (vicino a 1) indicano vegetazione sana, mentre valori bassi o negativi rappresentano acqua, suolo nudo o rocce. La mappa mostra vegetazione diffusa, con corsi d’acqua visibili nei valori bassi (colore nero/blu).
 >
-> **NDVI Post**  le zone che prima erano verde scuro e giallo ora sono diventate verdi più chiari o bluastri. Questo indica un calo significativo del valore dell'NDVI in tutta l'area.L'abbassamento dei valori dell'NDVI riflette la perdita o il grave danneggiamento della vegetazione, probabilmente a causa di un incendio boschivo o di un altro disastro naturale che ha rimosso la copertura vegetale. L'area colpita appare meno verde e più "spenta".
+> Nell' **NDVI Post** i valori calano in tutta l’area, indicando perdita di vegetazione e danni causati dall’incendio. L’area appare meno verde e più spenta.
 >
-> **ΔNDVI** La scala di valori va da -1.0 a 0.5. I valori negativi indicano una diminuzione dell'NDVI, cioè una perdita di vegetazione.L'intera immagine è dominata da colori arancioni e violacei scuri. Le aree viola scuro e nere indicano il massimo impatto negativo, dove il NDVI è crollato in maniera più significativa. Questo corrisponde alla distruzione più estesa della vegetazione.
-L'area arancione mostra una perdita di NDVI meno severa, probabilmente zone meno colpite o con vegetazione che è riuscita a resistere meglio.
+> Nell'**ΔNDVI** le zone viola scuro e nere indicano massimo danno, mentre le aree arancioni evidenziano cambiamenti meno severi. La mappa mostra chiaramente le zone più e meno colpite dall’incendio.
 
 # 5. Analisi Multitemporale⏳
 
@@ -276,17 +274,17 @@ df_long = melt(tabella, id.vars = "Classe",
                 value.name = "Percentuale")
 
 
-ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                            # Creazione grafico              
-   geom_bar(stat="identity", position="dodge") +                                         # Crea le barre del grafico
-  geom_text(aes(label=round(Percentuale,1)),                                             # Aggiunge etichette di testo  
-            position=position_dodge(width=0.9),                                          # Allinea il testo sopra le barre affiancate
-            vjust=-0.25, size=3) +                                                       # Sposta il testo leggermente sopra la parte superiore delle                                                                              barre.
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                            # Crea Grafico assegnando X, Y e colore
+ geom_bar(stat="identity", position="dodge") +                                           # Barre affiaancate per confrontare i periodi
+  geom_text(aes(label=round(Percentuale,1)),                                             # Aggiunge i valori sulle barre  
+            position=position_dodge(width=0.9),                                          # Allinea il testo sulle barre affiancate
+            vjust=-0.25,size=3) +                                                        # Sposta leggermente sopra le barre
   scale_fill_viridis_d() +                                                               # Applica la palette di colori 'viridis'
-  ylim(0,100) +                                                                          # Imposta i limiti dell'asse Y da 0 a 100
-  labs(title="Copertura vegetazione (NDVI > 0.3)",                                       # Imposta i titoli e le etichette del grafico
+  ylim(0,100) +                                                                          # Limiti asse Y 0-100%
+  labs(title="Copertura vegetazione (NDVI > 0.3)",                                       # Titoli ed etichette
        subtitle="Percentuale di vegetazione e non vegetazione prima e dopo l'incendio",
        y="Percentuale (%)", x="Classe NDVI") +
-  theme_minimal()                                                                        # Applica un tema pulito e minimale
+  theme_minimal()                                                                        # Tema pulito
 ````
 <p align="center">
   <img src="img/Veg-noVeg.png" width="900" height/>
@@ -323,9 +321,9 @@ dev.off()
 
 > **COMMENTO**
 >
-> La prima immagine ci mostra l'indice **DVI** che presenta valori bassi suggerendo che la biomassa vegetale non si è ancora completamente ripresa. Anche se ci potrebbe essere stata una ricrescita iniziale (spesso di erbe o arbusti), la copertura vegetale complessiva è ancora molto inferiore rispetto a una foresta matura.
+> La prima immagine ci mostra l'indice **DVI** che presenta valori bassi suggerendo che la biomassa vegetale non si è ancora completamente ripresa. La vegetazione, quindi, è principalmente erbe e arbusti ancora lontana dai livelli pre-incendio.
 >
-> La seconda immagine ci mostra l'indice **NDVI** che presenta valori elevati  rispetto a quelli immediatamente dopo l'incendio. Le aree scure che si vedevano subito dopo l'evento (come mostrato nell'analisi precedente) sono ora più chiare, tendenti all'arancione e al giallo.Questo aumento dell'**NDVI** indica una ricrescita della vegetazione. La zona non è più completamente "morta", ma mostra i primi segni di vita vegetale.
+> La seconda immagine ci mostra l'indice **NDVI** che presenta valori più alti rispetto al post-incendio indicano una parziale ricrescita della vegetazione, con le prime aree verdi che mostrano segni di recupero.
 
 ## Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.) 🗺️
 ````r
@@ -424,17 +422,17 @@ df_long = melt(tabella, id.vars="Classe",
                 variable.name="Periodo",
                 value.name="Percentuale")
 
-ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +
-  geom_bar(stat="identity", position="dodge") +            # barre affiaancate 
-  geom_text(aes(label=round(Percentuale,1)),               # aggiunge i numeri
-            position=position_dodge(width=0.9),            # allinea il testo sulle barre affiancate
-            vjust=-0.25,                                   # sposta leggermente sopra le barre
-            size=3) +                                      # dimensione testo
-  scale_fill_viridis_d() +                                 # palette viridis
-  ylim(0,100) +                                            # asse y da 0 a 100
-  labs(title="Copertura vegetazione (NDVI > 0.3)",         # titoli
+ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +   # Crea Grafico assegnando X, Y e colore
+  geom_bar(stat="identity", position="dodge") +                 # Barre affiaancate per confrontare i periodi
+  geom_text(aes(label=round(Percentuale,1)),                    # Aggiunge i valori sulle barre
+            position=position_dodge(width=0.9),                 # Allinea il testo sulle barre affiancate
+            vjust=-0.25,                                        # Sposta leggermente sopra le barre
+            size=3) +                                           # Dimensione testo
+  scale_fill_viridis_d() +                                      # Colori distinti per i periodi
+  ylim(0,100) +                                                 # Limiti asse Y 0-100%
+  labs(title="Copertura vegetazione (NDVI > 0.3)",              # Titoli ed etichette
        y="Percentuale (%)", x="Classe NDVI") +
-  theme_minimal()                                          # tema pulito
+  theme_minimal()                                               # Tema pulito
 ````
 <p align="center">
   <img src="img/2grafico2023.png" width="900" height/>
