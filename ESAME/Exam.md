@@ -116,7 +116,10 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 # 4. Calcolo degli indici vegetazionali 📈
 
 ## Indice NBR (Normalized Burn Ratio) 🔥
-- Formula: (NIR - SWIR2) / (NIR + SWIR2)
+- Formula:
+$$
+NBR = \frac{NIR - SWIR2}{NIR + SWIR2}
+$$
 - L'indice sfrutta la banda NIR (B8) sensibile alla vegetazione sana e la banda SWIR2 (B12) sensibile all’umidità e alle superfici bruciate.
 - Evidenzia le **aree bruciate o danneggiate da incendi**.
 - Valori bassi indicano vegetazione compromessa o terreno bruciato. 
@@ -147,8 +150,11 @@ dev.off()  # Chiudere il pannello di visualizzazione delle immagini
  > La mappa differenziale mette in evidenza l’impatto del fuoco: valori positivi corrispondono a zone dove la vegetazione è stata compromessa, permettendo di localizzare e quantificare le aree più danneggiate.
 
 ## Indice DVI (Difference Vegetation Index) 🌿
+- Formula:
+$$
+DVI = NIR - RED
+$$
 - L’indice DVI (Difference Vegetation Index) è calcolato come differenza tra la riflettanza nel vicino infrarosso (NIR, banda B8) e quella nel rosso (RED, banda B4).
-- Formula: NIR - RED
 - Misura la **quantità assoluta di vegetazione** senza normalizzazione.
 - Valori elevati indicano presenza abbondante di vegetazione.
 
@@ -178,7 +184,11 @@ dev.off()
 > Nell'**ΔDVI** osserviamo le zone colorate di viola scuro mostrano il massimo danno alla vegetazione, mentre le aree arancioni chiare indicano cambiamenti meno significativi. L’immagine mette in evidenza chiaramente le aree più colpite dall’incendio e quelle dove la vegetazione è stata meno danneggiata.
 
 ## Indice NDVI (Normalized Difference Vegetation Index) 🍃
-- Formula: (NIR - RED) / (NIR + RED)
+- Formula: 
+$$
+NDVI = \frac{NIR - RED}{NIR + RED}
+$$
+
 - Indica la **salute della vegetazione**.
 - Valori vicini a 1: vegetazione sana e rigogliosa.
 - Valori vicini a 0 o negativi: suolo nudo, acqua o aree degradate.
