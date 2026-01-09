@@ -286,7 +286,7 @@ df_long = melt(tabella, id.vars = "Classe",                                     
 
 
 ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +                            # Crea Grafico assegnando X, Y e colore
- geom_bar(stat="identity", position="dodge") +                                           # Barre affiaancate per confrontare i periodi
+ geom_bar(stat="identity", position="dodge") +                                           # Barre affiancate per confrontare i periodi
   geom_text(aes(label=round(Percentuale,1)),                                             # Aggiunge i valori sulle barre  
             position=position_dodge(width=0.9),                                          # Allinea il testo sulle barre affiancate
             vjust=-0.25,size=3) +                                                        # Sposta leggermente sopra le barre
@@ -435,7 +435,7 @@ df_long = melt(tabella, id.vars = "Classe",                     # Converte la ta
 
 
 ggplot(df_long, aes(x=Classe, y=Percentuale, fill=Periodo)) +   # Crea Grafico assegnando X, Y e colore
-  geom_bar(stat="identity", position="dodge") +                 # Barre affiaancate per confrontare i periodi
+  geom_bar(stat="identity", position="dodge") +                 # Barre affiancate per confrontare i periodi
   geom_text(aes(label=round(Percentuale,1)),                    # Aggiunge i valori sulle barre
             position=position_dodge(width=0.9),                 # Allinea il testo sulle barre affiancate
             vjust=-0.25,                                        # Sposta leggermente sopra le barre
