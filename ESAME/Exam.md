@@ -332,9 +332,9 @@ dev.off()
 
 > **COMMENTO**
 >
-> La prima immagine ci mostra l'indice **DVI** che presenta valori bassi suggerendo che la biomassa vegetale non si è ancora completamente ripresa. La vegetazione, quindi, è principalmente erbe e arbusti ancora lontana dai livelli pre-incendio.
+> La prima immagine ci mostra l'indice **DVI** che presenta valori bassi suggerendo che la biomassa vegetale non si è ancora completamente ripresa. La vegetazione, quindi, è principalmente erbe e arbusti ancora lontana dai livelli pre-incendio (colori giallo-oro).La prevalenza di tonalità viola scuro e nero (corrispondenti a valori prossimi allo 0 nella scala inferno), infatti, suggerisce che la biomassa vegetale non si è ancora recuperata. 
 >
-> La seconda immagine ci mostra l'indice **NDVI** che presenta valori più alti rispetto al post-incendio indicano una parziale ricrescita della vegetazione, con le prime aree verdi che mostrano segni di recupero.
+> La seconda immagine ci mostra l'indice **NDVI** che presenta valori più alti rispetto al post-incendio indicano una parziale ricrescita della vegetazione, con le prime aree verdi che mostrano segni di recupero.Si osserva un viraggio verso i colori arancione e giallo (valori tra 0.4 e 0.7) nelle aree precedentemente bruciate. Questo aumento del vigore vegetativo indica una parziale ricrescita della vegetazione pioniera; i pixel neri/viola profondo (valori negativi) identificano invece con precisione i corpi idrici, come il fiume centrale.
 
 ## Allineamento raster (con resample() sulla griglia pre-incendio, per garantire che ogni pixel corrisponda esattamente alla stessa area geografica.) 🗺️
 ````r
