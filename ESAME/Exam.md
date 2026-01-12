@@ -179,7 +179,7 @@ dev.off()
 >
 > Nell' **DVI Post** le aree verdi-gialle diventano viola-blu scuro, indicando una drastica perdita di vegetazione a causa dell’incendio.
 >
-> Nell'**ΔDVI** osserviamo le zone colorate di viola scuro mostrano il massimo danno alla vegetazione, mentre le aree arancioni chiare indicano cambiamenti meno significativi. L’immagine mette in evidenza chiaramente le aree più colpite dall’incendio e quelle dove la vegetazione è stata meno danneggiata.
+> Nell'**ΔDVI** le aree colorate in giallo brillante e arancione chiaro indicano i valori positivi più elevati, evidenziando le zone dove la perdita di biomassa è stata massima. Al contrario, le tonalità viola scuro indicano valori vicini allo zero o negativi, corrispondenti a zone non colpite dal rogo o a corpi idrici dove non vi è stata variazione significativa della vegetazione.
 
 ## Indice NDVI (Normalized Difference Vegetation Index) 🍃
 $$
