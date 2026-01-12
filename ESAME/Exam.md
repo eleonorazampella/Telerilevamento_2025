@@ -387,7 +387,7 @@ plot(dndvi_2023, main="ΔNDVI Post 2022 vs 2023", col=inferno(100))
 >
 > La **riga superiore** ci mostra come dalla vegetazione sana inziale(colore giallo e verde) ci sia stata una perdita significatica di biomassa con l'incendio fino ad arrivare ad una ricrescita della vegetazione ad un anno dall'incendio (colori sono più gialli e verdi)
 >
-> La **riga inferiore** ci mostra la differenza tra le mappe per quantificare il cambiamento avvenuto. Osserviamo all'inizio aree nere e viola scuro indicano la distruzione massima della vegetazione causata dall'incendio, successivamente i colori arancioni e gialli indicano un aumento dell'NDVI, a testimonianza di una ripresa positiva dell'ecosistema.
+> La **riga inferiore** ci mostra la differenza tra le mappe per quantificare il cambiamento avvenuto.Nella mappa **ΔNDVI Pre vs Post 2022** l'area colpita dall'incendio emerge nettamente con tonalità giallo chiaro e bianco; questi colori rappresentano i valori positivi più alti della differenza, localizzando dove la distruzione della vegetazione è stata massima. Al contrario, nella mappa **ΔNDVI Post 2022 vs 2023**, la quasi totalità dell'area bruciata assume colorazioni viola scuro e nero. Queste tonalità indicano valori negativi, testimoniando matematicamente che l'NDVI del 2023 è superiore a quello del 2022 e confermando così una ripresa positiva dell'ecosistema, con la ricolonizzazione del suolo da parte di nuova vegetazione fotosinteticamente attiva."
 
 ## Analisi classificazione NDVI 🗂️
 ````r
