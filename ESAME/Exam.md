@@ -368,7 +368,7 @@ dev.off()
 >
 > La **riga superiore** mostra un crollo del verde nel DVI Post-incendio 2022, seguito da una leggera ricrescita nel 2023, pur senza raggiungere i livelli pre-evento.
 >
-> La **riga inferiore** mostra la differenza tra i vari periodi. Nell' **ΔDVI Pre vs Post 2022** le aree più scure (viola-nero) indicano la massima distruzione della vegetazione. Nell'**ΔDVI Post 2022 vs 2023** i colori arancioni e gialli rappresentano un aumento del valore DVI, indicando una positiva, seppur parziale, ripresa della vegetazione.
+> La **riga inferiore** mostra la differenza tra i vari periodi. Nell' **ΔDVI Pre vs Post 2022** l'ampia zona centrale caratterizzata da tonalità giallo chiaro e bianco evidenzia i valori positivi più alti della sottrazione , localizzando con precisione le aree dove la perdita di biomassa è stata massima a causa dell'incendio. Nell'**ΔDVI Post 2022 vs 2023** emergere di tonalità viola e nero all'interno del perimetro del rogo indica valori negativi della differenza; questo accade perché il valore di DVI rilevato nel 2023 è superiore a quello del 2022, confermando visivamente l'avvio di una seppur parziale ripresa della vegetazione pioniera a un anno di distanza dall'evento.
 
 ## NDVI 🍃
 ````r
