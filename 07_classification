@@ -77,3 +77,4 @@ p2=ggplot(tabout,aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity",
 p1 / p2 
 
 
+
