@@ -121,7 +121,7 @@ NBR = \frac{NIR - SWIR2}{NIR + SWIR2}
 $$
 - L'indice sfrutta la banda NIR (B8) sensibile alla vegetazione sana e la banda SWIR2 (B12) sensibile all’umidità e alle superfici bruciate.
 - Evidenzia le **aree bruciate o danneggiate da incendi**.
-- Valori bassi indicano vegetazione compromessa o terreno bruciato. 
+ 
 
 ````r
 nbr_pre = (pre[["B8"]] - pre[["B12"]]) / (pre[["B8"]] + pre[["B12"]]) # Calcolo NBR pre-incendio
@@ -154,7 +154,7 @@ DVI = NIR - RED
 $$
 - L’indice DVI (Difference Vegetation Index) è calcolato come differenza tra la riflettanza nel vicino infrarosso (NIR, banda B8) e quella nel rosso (RED, banda B4).
 - Misura la **quantità assoluta di vegetazione** senza normalizzazione.
-- Valori elevati indicano presenza abbondante di vegetazione.
+
 
 ````r
 dvi_pre = pre[["B8"]] - pre[["B4"]] # Calcolo DVI pre-incendio
