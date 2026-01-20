@@ -211,7 +211,7 @@ dev.off() # Chiudere il pannello di visualizzazione delle immagini
 >
 > Nell' **NDVI Post** i valori calano in tutta l’area, indicando perdita di vegetazione e danni causati dall’incendio. L’area appare meno verde e più spenta.
 >
-> Nell'**ΔNDVI** le zone colorate in giallo chiaro e bianco indicano i valori positivi più elevati (maggiore scostamento tra pre e post), identificando chiaramente le aree dove il danno alla vegetazione è stato massimo. Al contrario, le tonalità arancioni e viola scuro mostrano cambiamenti meno severi o assenti, permettendo di distinguere il perimetro dell'incendio dalle zone che sono rimaste inalterate.
+> Nell'**ΔNDVI** le zone colorate in giallo chiaro indicano i valori positivi più elevati (maggiore scostamento tra pre e post), identificando chiaramente le aree dove il danno alla vegetazione è stato massimo. Al contrario, le tonalità arancioni e viola scuro mostrano cambiamenti meno severi o assenti, permettendo di distinguere il perimetro dell'incendio dalle zone che sono rimaste inalterate.
 > 
 # 5. Analisi Multitemporale⏳
 
