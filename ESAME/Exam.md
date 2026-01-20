@@ -167,7 +167,7 @@ im.multiframe(1,3)
 plot(dvi_pre, main = "DVI Pre", col=viridis::viridis(100)) # Visualizzazione DVI pre-incendio 
 plot(dvi_post, main = "DVI Post", col=viridis::viridis(100)) # Visualizzazione DVI post-incendio 
 plot(ddvi, main = "ΔDVI", col=viridis::inferno(100)) # Visualizzazione della differenza DVI pre e post incendio 
-dev.off()
+dev.off() # Chiudere il pannello di Visualizzazione delle immagini
 ````
 <p align="center">
   <img src="img/DVI.png" width="2000"/>
