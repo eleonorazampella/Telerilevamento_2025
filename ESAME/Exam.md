@@ -224,7 +224,7 @@ classi_post=classify(ndvi_post, rcl=matrix(c(-Inf,soglia,0, soglia,Inf,1), ncol=
 ````
 > [!IMPORTANT]
 > 
-> Ho scelto la soglia NDVI = 0.3 per distinguere vegetazione e non-vegetazione. I valori inferiori a 0.3 indicano generalmente suolo nudo o aree degradate, mentre valori pari o superiori a 0.3 corrispondono a vegetazione attiva e sana. In questo modo, tutti i valori NDVI < 0.3 vengono classificati come 0 (non vegetazione), mentre tutti i valori NDVI ≥ 0.3 diventano 1 (vegetazione).
+> Ho scelto la soglia NDVI = 0.3 per distinguere vegetazione e non-vegetazione per minimizzare l'effetto del suolo nudo. Questo perchè i valori inferiori a 0.3 sono dovuti alla riflettanza del terreno o a residui secchi;impostando questa soglia, mi assicuro di analizzare solo i pixel dove è presente una reale attività fotosintetica e una biomassa verde significativa. I valori inferiori a 0.3 indicano generalmente suolo nudo o aree degradate, mentre valori pari o superiori a 0.3 corrispondono a vegetazione attiva e sana. In questo modo, tutti i valori NDVI < 0.3 vengono classificati come 0 (non vegetazione), mentre tutti i valori NDVI ≥ 0.3 diventano 1 (vegetazione).
 
 ## Visualizzazione delle classi 👁️
 
