@@ -22,7 +22,7 @@ Gli indici vegetazionali calcolati sono:
 
  >  Area di studio(Sierra de la Culebra,Zamora,Spagna)
  
-# 2. Obiettivo del progetto 🎯
+# 2. Obiettivo del progetto 🎯 
 
 L'obiettivo del progetto è quello di monitorare i cambiamenti della vegetazione nel tempo, quantificare l’impatto dell’incendio e osservare il recupero vegetazionale un anno dopo, attraverso il calcolo di indici spettrali e analisi multitemporale.
 
