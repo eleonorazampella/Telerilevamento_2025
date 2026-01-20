@@ -17,7 +17,7 @@ Gli indici vegetazionali calcolati sono:
 - NBR (Normalized Burn Ratio) – evidenzia aree bruciate
 
 <p align="center">
-  <img src="img/Area di studio.png" width="1000" height/>
+  <img src="img/Area di studio.png" width="1000">
 </p>
 
  >  Area di studio(Sierra de la Culebra,Zamora,Spagna)
