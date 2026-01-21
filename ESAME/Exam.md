@@ -58,7 +58,7 @@ plot(pre) # Per visualizzare l'immagine importata
 ````
 
 <p align="center">
-  <img src="img/preincendio.png" width="800" height/>
+  <img src="img/preincendio.png" width="800">
 </p>
 
 > Immagine prima dell'incendio nelle 5 bande
